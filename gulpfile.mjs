@@ -2,11 +2,10 @@ import gulp from 'gulp';
 import sass from 'gulp-sass';
 import sassModule from 'sass';
 import browserSync from 'browser-sync';
-import { deleteAsync as del } from 'del'; // 수정된 부분
+import { deleteAsync as del } from 'del'; // del을 named import로 가져오기
 import fileinclude from 'gulp-file-include';
 import prettyHtml from 'gulp-pretty-html';
 
-// ES 모듈 방식으로 가져오기
 const scss = sass(sassModule);
 const browserSyncInstance = browserSync.create();
 
@@ -22,7 +21,7 @@ const PATH = {
   },
 };
 
-// 작업물
+// 작업물 경로
 const DEV_PATH = {
   CLEAN: "./dev",
   HTML: "./dev/src",
@@ -63,12 +62,6 @@ export const scssCompile = () => {
     .pipe(browserSyncInstance.stream());
 };
 
-export const scssDistCompile = () => {
-  return gulp.src(PATH.ASSETS.COMMON_CSS + '/**/*.scss')
-    .pipe(scss({ outputStyle: 'compressed' }).on('error', scss.logError))
-    .pipe(gulp.dest(DEST_PATH.ASSETS.COMMON_CSS));
-};
-
 // HTML tasks
 export const html = () => {
   return gulp.src(PATH.HTML + '/**/*.html')
@@ -80,51 +73,11 @@ export const html = () => {
     .pipe(browserSyncInstance.stream());
 };
 
-export const htmlDist = () => {
-  return gulp.src(PATH.HTML + '/**/*.html')
-    .pipe(fileinclude({
-      prefix: '@@',
-      basepath: '@file',
-    }))
-    .pipe(prettyHtml({
-      indent_size: 2,
-      indent_char: ' ',
-    }))
-    .pipe(gulp.dest(DEST_PATH.HTML));
-};
-
 // Script tasks
 export const scriptConcat = () => {
   return gulp.src(PATH.ASSETS.COMMON_SCRIPT + '/**/*.js')
     .pipe(gulp.dest(DEV_PATH.ASSETS.COMMON_SCRIPT))
     .pipe(browserSyncInstance.stream());
-};
-
-export const scriptDistConcat = () => {
-  return gulp.src(PATH.ASSETS.COMMON_SCRIPT + '/**/*.js')
-    .pipe(gulp.dest(DEST_PATH.ASSETS.COMMON_SCRIPT));
-};
-
-// Image tasks
-export const imagemin = () => {
-  return gulp.src(PATH.ASSETS.COMMON_IMG + '/**/*.*')
-    .pipe(gulp.dest(DEV_PATH.ASSETS.COMMON_IMG));
-};
-
-export const imageminDist = () => {
-  return gulp.src(PATH.ASSETS.COMMON_IMG + '/**/*.*')
-    .pipe(gulp.dest(DEST_PATH.ASSETS.COMMON_IMG));
-};
-
-// Font tasks
-export const fonts = () => {
-  return gulp.src(PATH.ASSETS.FONT + '/**/*.*')
-    .pipe(gulp.dest(DEV_PATH.ASSETS.FONT));
-};
-
-export const fontsDist = () => {
-  return gulp.src(PATH.ASSETS.FONT + '/**/*.*')
-    .pipe(gulp.dest(DEST_PATH.ASSETS.FONT));
 };
 
 // Watch tasks
@@ -156,8 +109,11 @@ export const browserSyncTask = () => {
   });
 };
 
-// Default and dist tasks
-export const defaultTask = gulp.series(clean, scssCompile, html, scriptConcat, imagemin, fonts, browserSyncTask, watch);
-export const distTask = gulp.series(cleanDist, scssDistCompile, htmlDist, scriptDistConcat, imageminDist, fontsDist);
+// Default task
+export const defaultTask = gulp.series(
+  clean,
+  gulp.parallel(scssCompile, html, scriptConcat),
+  gulp.parallel(browserSyncTask, watch)
+);
 
 export default defaultTask;
