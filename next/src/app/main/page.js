@@ -2,8 +2,8 @@
 
 export default function main() {
     return (
-        <div className="flex min-h-screen flex-col items-center justify-between p-24">
-            
+        <div className="">
+            <div className="w-60">main test</div>
         </div>
     );
 }
