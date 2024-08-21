@@ -1,4 +1,4 @@
-import { connectDB } from "../../../app/util/database.js";
+import { connectDB } from "./../../../app/util/database.js";
 
 export default async function handler(요청, 응답) {
     if (요청.method == "POST") {
