@@ -2,8 +2,11 @@ import gulp from 'gulp';
 import sass from 'gulp-sass';
 import sassModule from 'sass';
 import browserSync from 'browser-sync';
-import { deleteAsync as del } from 'del'; // del을 named import로 가져오기
+import { deleteAsync as del } from 'del';
 import fileinclude from 'gulp-file-include';
+import postcss from 'gulp-postcss';
+import tailwindcss from 'tailwindcss';
+import autoprefixer from 'autoprefixer';
 
 const scss = sass(sassModule);
 const browserSyncInstance = browserSync.create();
@@ -58,6 +61,7 @@ export const scssCompile = () => {
   return gulp
     .src(PATH.ASSETS.COMMON_CSS + '/**/*.scss')
     .pipe(scss({ outputStyle: 'expanded' }).on('error', scss.logError))
+    .pipe(postcss([tailwindcss, autoprefixer])) // PostCSS로 Tailwind CSS와 Autoprefixer 적용
     .pipe(gulp.dest(DEV_PATH.ASSETS.COMMON_CSS))
     .pipe(browserSyncInstance.stream());
 };
