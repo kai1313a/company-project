@@ -1,4 +1,5 @@
 import "./styles/globals.css";
+import "./styles/join.scss";
 
 export default function RootLayout({ children }) {
   return (
