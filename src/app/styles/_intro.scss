@@ -1,6 +1,7 @@
 .intro {
     background-color: var(--main01);
 }
+
 .cover {
     height: 100%;
 
@@ -9,7 +10,5 @@
         @include vw-mo(font-size, 20);
     }
 
-    &__img-wrap {
-        gap:
-    }
+    &__img-wrap {}
 }
