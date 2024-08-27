@@ -1,4 +1,7 @@
 .meal {
+    width: 100%;
+    @include vw-mo(padding, 20);
+
     &__title {
         font-size: 30px;
         @include vw-mo(font-size, 30);

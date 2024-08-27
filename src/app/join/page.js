@@ -19,7 +19,7 @@ export default function join() {
     }, []);
 
     return (
-        <div className="flex flex-col items-center min-h-screen p-20 bg-white">
+        <div className="flex flex-col items-center min-h-screen bg-white">
             <main className="meal">
                 <h2 className="meal__title text-black my-9 font-semibold">
                     오늘도 존버 <span className='userName'>{userName}</span>님<br />건강한 <span className='companyUser relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-[10px] after:bg-[#4DF5C3] after:z-[-1]'>회사세끼</span> 되세요.
