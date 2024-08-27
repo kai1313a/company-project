@@ -1,6 +1,6 @@
 export default function intro() {
     return (
-        <div className="intro flex min-h-screen flex-col items-center justify-between p-24">
+        <div className="intro jua flex min-h-screen flex-col items-center justify-between p-24">
             <div className="cover">
                 <h1 className="cover__title">우리 회사 건강한 식문화</h1>
                 <div className="cover__wrap">

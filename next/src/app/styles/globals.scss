@@ -4,8 +4,19 @@
 
 @import 'mixin';
 @import 'join';
+@import 'intro';
 
 :root {
+  --main01: #4DF5C3; 
+  --main02: #83F8D5;
+  --main03: #B8FBE7; 
+  --main04: #E3FEF6; 
+  --white: #ffffff;
+  --balck: #000000; 
+  --grey: #666666; 
+  --MiddleGrey01: #C3C3C3; 
+  --MiddleGrey02: #e2e2e2; 
+  --LightGrey: #F2F2F2; 
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
