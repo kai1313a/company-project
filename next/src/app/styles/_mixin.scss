@@ -1,0 +1,13 @@
+@mixin vw-mo($property, $val, $device-width: 720) {
+    @media (max-width: $device-width + px) {
+
+        // 720px 이하일 때만 적용
+        @if $property ==margin-bottom or $property ==margin-top or $property ==margin-left or $property ==margin-right or $property ==padding-bottom or $property ==padding-top or $property ==padding-left or $property ==padding-right or $property ==width or $property ==height or $property ==font-size or $property ==top or $property ==bottom or $property ==left or $property ==right {
+            #{$property}: calc(($val / $device-width) * 100vw);
+        }
+    }
+}
+
+@mixin px-value($property, $val) {
+    #{$property}: #{$val}px;
+}

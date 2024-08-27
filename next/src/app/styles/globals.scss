@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+@import 'mixin';
+@import 'join';
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -18,12 +21,9 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
+  background: linear-gradient(to bottom,
       transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
 }
 
 @layer utilities {
@@ -103,5 +103,10 @@ body {
   font-style: normal;
 }
 
-body {font-family: 'notosans', sans-serif !important;}
-.jua {font-family: 'jua', sans-serif !important;}
+body {
+  font-family: 'notosans', sans-serif !important;
+}
+
+.jua {
+  font-family: 'jua', sans-serif !important;
+}
