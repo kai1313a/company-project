@@ -1,14 +1,227 @@
 .intro {
-    background-color: var(--main01);
-}
+    display: flex;
+    position: relative;
+    padding: 0 40px;
+    @include vw-mo(padding, 0 40);
+    background-color: var(--white) !important;
+    
+    .cover {
+        display: flex;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        background-color: var(--main01) !important;
+        visibility: visible;
+        transition: all 1s ease-out;
+    
+        &.off {
+            opacity: 0;
+            visibility: hidden;
+        }
 
-.cover {
-    height: 100%;
-
-    &__title {
-        font-size: 20px;
-        @include vw-mo(font-size, 20);
+        &__wrap {
+            display: flex;
+            gap: 18px;
+            @include vw-mo(gap, 18);
+        }
+        &__title.animate__animated {
+            margin-bottom: 12px;
+            @include vw-mo(margin-bottom, 12);
+            font-size: 40px;
+            @include vw-mo(font-size, 40);
+            color: var(--white);
+            animation-duration: 0.4s;
+        }
+        &__img-wrap {
+            position: relative;
+            display: flex;
+            &--01.animate__animated {
+                animation-duration: 0.2s;
+                animation-delay: 0.5s;
+                animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+            }
+            &--03 {
+                width: 122px;
+                @include vw-mo(width, 122);
+                height: 124px;
+                @include vw-mo(height, 124);
+            }
+        }
+        &__img {
+            &--01 {
+                width: 108px;
+                @include vw-mo(width, 108);
+                height: 120px;
+                @include vw-mo(height, 120);
+            }
+            &--01-1.animate__animated {
+                width: 80px;
+                @include vw-mo(width, 80);
+                height: 72px;
+                @include vw-mo(height, 72);
+                bottom: 19px;
+                @include vw-mo(bottom, 19);
+                animation-duration: 0.9s;
+                animation-delay: 1.9s;
+            }
+            &--02.animate__animated {
+                width: 108px;
+                @include vw-mo(width, 108);
+                height: 100px;
+                @include vw-mo(height, 100);
+                animation-duration: 0.2s;
+                animation-delay: 0.7s;
+                animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+            }
+            &--03.animate__animated {
+                width: 102px;
+                @include vw-mo(width, 102);
+                height: 100px;
+                @include vw-mo(height, 100);
+                animation-duration: 0.2s;
+                animation-delay: 0.9s;
+                animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+            }
+            &--04.animate__animated {
+                width: 72px;
+                @include vw-mo(width, 72);
+                height: 108px;
+                @include vw-mo(height, 108);
+                top: 8px;
+                @include vw-mo(top, 8);
+                animation-duration: 0.2s;
+                animation-delay: 1.1s;
+                animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+            }
+            &--04-1.animate__animated {
+                width: 56px;
+                @include vw-mo(width, 56); 
+                height: 140px;
+                @include vw-mo(height, 140);
+                right: -8px;
+                @include vw-mo(right, -8);
+                animation-duration: 0.7s;
+                animation-delay: 1s;
+                animation-timing-function: cubic-bezier(0.895, 0.03, 0.685, 0.9);
+            }
+        }
     }
 
-    &__img-wrap {}
+    .login {
+        width: 100%;
+        height: 100%;
+
+        &__title {
+            margin-bottom: 106px;
+            @include vw-mo(margin-bottom, 106);
+            font-size: 48px;
+            @include vw-mo(font-size, 48);
+            font-weight: 600;
+            line-height: 1.3;
+            color: var(--black);
+        }
+        &__profile {
+            position: relative;
+            width: 296px;
+            @include vw-mo(width, 296);
+            height: 296px;
+            @include vw-mo(height, 296);
+            margin: 0 auto;
+            margin-bottom: 124px;
+            @include vw-mo(margin-bottom, 124);
+        }
+        &__img {
+            width: 100%;
+            height: 100%;
+
+            &-wrap {
+                border-radius: 100%;
+                overflow: hidden;
+            }
+            &-input {
+                display: none;
+            }
+            &-label {
+                position: absolute;
+                right: 0;
+                bottom: 0;
+                width: 72px;
+                @include vw-mo(width, 72);
+                height: 72px;
+                @include vw-mo(height, 72);
+                background: url('/image/intro/profile-input.png') no-repeat center/cover;
+                cursor: pointer;
+            }
+            &-delete {
+                display: none;
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 72px;
+                @include vw-mo(width, 72);
+                height: 72px;
+                @include vw-mo(height, 72);
+                background: url('/image/intro/profile-delete.png') no-repeat center/cover;
+                cursor: pointer;
+                &.show {
+                    display: block;
+                }
+                .blind {display: none;}
+            }
+        }
+        &__name {
+            width: 526px;
+            @include vw-mo(width, 526);
+            margin: 0 auto;
+            margin-bottom: 150px;
+            @include vw-mo(margin-bottom, 150);
+
+            &-input {
+                width: 100%;
+                font-size: 48px;
+                @include vw-mo(font-size, 48);
+                font-weight: 600;
+                line-height: 1.8;
+                color: var(--black);
+                border-bottom: 2px solid var(--MiddleGrey01);
+                background-color: transparent;
+                &::placeholder {
+                    font-size: 28px;
+                    @include vw-mo(font-size, 28);
+                    font-weight: 400;
+                    color: var(--MiddleGrey01);
+                }
+            }
+            &-check {
+                height: 72px;
+                @include vw-mo(height, 72);
+                font-size: 32px;
+                @include vw-mo(font-size, 32);
+                font-weight: 400;
+                line-height: 2.25;
+                color: var(--MiddleGrey01);
+            }
+        }
+        &__btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            max-width: 706px;
+            @include vw-mo(max-width, 706);
+            width: 100%;
+            height: 120px;
+            @include vw-mo(height, 120);
+            font-size: 40px;
+            @include vw-mo(font-size, 40);
+            font-weight: 600;
+            color: var(--white);
+            background-color: var(--main01);
+            border-radius: 10px;
+            @include vw-mo(border-radius, 10);
+        }
+    }
 }
+
