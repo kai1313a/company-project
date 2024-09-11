@@ -1,49 +1,57 @@
-
-
 export default function detail() {
     return (
-        <div className="flex min-h-screen flex-col items-center justify-betwee">
+        <div className="wrap">
             <div className="detail">
-            <div className="Header-list w-full flex flex-col items-center ">
-                <span className="Header-list__menu">점심</span>
-            </div>
+                <div className="header">
+                    <button className="btn_share">
+                        <span className="blind">공유하기</span>
+                    </button>
 
-                <div className="flex items-center detail-tag">
-                    <ul className="flex items-center justify-between gap-x-2.5 detail-tag__list">
-                        <li className="inline-flex items-center px-2.5 detail-tag__item">#스트레스</li>
-                        <li className="inline-flex items-center px-2.5 detail-tag__item">#스트레스</li>
-                        <li className="inline-flex items-center px-2.5 detail-tag__item">#스트레스</li>
-                        <li className="inline-flex items-center px-2.5 detail-tag__item">#스트레스</li>
+                    <span className="title">떡볶이 먹을사람 괌</span>
+
+                    <button className="btn_write">
+                        <span className="blind">글쓰기</span>
+                    </button>
+                </div>
+
+                <div className="detail_tag">
+                    <ul className="detail_list">
+                        <div className="item">#스트레스</div>
                     </ul>
                 </div>
 
-                <div className="detail-menu">
-                    <h3 className="detail-menu__title">메뉴 목록</h3>
-                    <ul className="flex items-center gap-5 detail-menu__list">
-                        <li className="inline-flex rounded detail-menu__item">
-                            <span className="flex items-center justify-center detail-menu__num">1</span>
+                <div className="detail_menu">
+                    <h3 className="title">메뉴 목록</h3>
+                    <ul className="menu_list">
+                        <li className="item">
+                            <span className="num">1</span>
 
-                            <div className="detail-menu__info">
-                                <div className="detail-menu__top">
-                                    <div className="flex items-center justify-between detail-menu__inner">
-                                        <strong className="detail-menu__info--name">메뉴 이름</strong>
-                                        <button className="inline-flex items-center justify-center rounded detail-menu__info--btn-vote">투표 하기</button>
-                                        <p className="detail-menu__info--person">
-                                            <span color="inline-flex items-center justify-center">1</span>
-                                        </p>
+                            <div className="info">
+                                <div className="top">
+                                    <div className="inner">
+                                        <strong className="name">메뉴 이름</strong>
+
+                                        <div className="vote_box">
+                                            <button className="btn_vote">투표 하기</button>
+                                            <p className="icon_person">
+                                                <span className="person_num">1</span>
+                                            </p>
+                                        </div>
                                     </div>
                                     
-                                    <p className="detail-menu__info--txt">예상금액 : 1인당 <span className="detail-menu__info--price">10,000</span>원</p>
+                                    <p className="txt">예상금액 : 1인당 <span className="price">10,000</span>원</p>
                                 </div>
                                 
-                                <div className="flex items-center detail-menu__btm">
-                                    <div className="flex detail-menu__inner">
-                                        <button className="detail-menu__btn-photo photo01">사진 업로드</button>
-                                        <button className="detail-menu__btn-photo photo01">사진 업로드</button>
-                                        <button className="detail-menu__btn-photo photo01">사진 업로드</button>
+                                <div className="btm">
+                                    <div className="photo_list">
+                                        <button className="btn_photo">사진 업로드</button>
+                                        <button className="btn_photo">사진 업로드</button>
+                                        <button className="btn_photo">사진 업로드</button>
                                     </div>
 
-                                    <a hfre="" className="detail-menu__btn-share">공유하기</a>
+                                    <a href="" className="btn_share">
+                                        <span className="blind">공유하기</span>
+                                    </a>
                                 </div>
                             </div>
                         </li>
