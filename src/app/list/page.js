@@ -93,7 +93,7 @@ function ListPage() {
     };
 
     return (
-        <div className="list flex flex-col min-h-screen">
+        <div className="wrap list flex flex-col min-h-screen">
             <div className="Header-list w-full flex flex-col items-center ">
                 <span className="Header-list__menu">점심</span>
                 <div className="Header-list__search flex relative">
@@ -110,9 +110,6 @@ function ListPage() {
             <div className="inner">
                 <div className="filter-sort flex items-center">
                     <div className="sort">
-                        <select>
-
-                        </select>
                     </div>
                     <div className="filter flex">
                         <button

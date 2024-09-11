@@ -12,7 +12,7 @@ export default function Join() {
     ];
 
     return (
-        <div className="flex flex-col items-center min-h-screen bg-white">
+        <div className="wrap flex flex-col items-center min-h-screen bg-white">
             <main className="meal">
                 <h2 className="meal__title text-black font-semibold jua">
                     오늘도 존버 <span className="userName">{userName}</span>님<br />
@@ -39,11 +39,11 @@ export default function Join() {
                     ))}
                 </ul>
 
-                <textarea 
+                <textarea
                     className="meal__banner w-full p-5 rounded-xl text-black font-semibold 
-                        text-lg opacity-20 bg-gradient-to-tr from-[#e2e2e2] to-[#666666]" 
-                    defaultValue="광고배너" 
-                    readOnly 
+                        text-lg opacity-20 bg-gradient-to-tr from-[#e2e2e2] to-[#666666]"
+                    defaultValue="광고배너"
+                    readOnly
                 />
             </main>
         </div>

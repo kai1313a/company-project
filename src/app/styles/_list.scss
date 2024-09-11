@@ -74,22 +74,20 @@
         @include vw-mo(margin-bottom, 20);
 
         .sort {
-            select {
-                font-size: 0;
-                background: transparent;
-                border: none;
-                outline: none;
-                display: block;
-                background: url('/image/list/list-icon-filter.png') no-repeat center/contain;
-                width: 20px;
-                height: 20px;
-                @include vw-mo(width, 20);
-                @include vw-mo(height, 20);
+            font-size: 0;
+            background: transparent;
+            border: none;
+            outline: none;
+            display: block;
+            background: url('/image/list/list-icon-filter.png') no-repeat center/contain;
+            width: 20px;
+            height: 20px;
+            @include vw-mo(width, 20);
+            @include vw-mo(height, 20);
 
-                &::after {
-                    content: '';
+            &::after {
+                content: '';
 
-                }
             }
         }
 
