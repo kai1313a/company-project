@@ -128,8 +128,8 @@ body {
 
 .wrap {
   margin: 0 auto;
-  max-width: 720px;
-  @include vw-mo(max-width, 720);
+  max-width: 600px;
+  @include vw-mo(max-width, 600);
   background-color: transparent;
   border-right: 1px solid var(--LightGrey);
   border-left: 1px solid var(--LightGrey);
