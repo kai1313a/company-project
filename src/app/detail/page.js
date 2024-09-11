@@ -2,9 +2,13 @@
 
 export default function detail() {
     return (
-        <div className="flex min-h-screen flex-col items-center justify-between pt-4">
+        <div className="flex min-h-screen flex-col items-center justify-betwee">
             <div className="detail">
-                <div className="flex items-center justify-between detail-tag">
+            <div className="Header-list w-full flex flex-col items-center ">
+                <span className="Header-list__menu">점심</span>
+            </div>
+
+                <div className="flex items-center detail-tag">
                     <ul className="flex items-center justify-between gap-x-2.5 detail-tag__list">
                         <li className="inline-flex items-center px-2.5 detail-tag__item">#스트레스</li>
                         <li className="inline-flex items-center px-2.5 detail-tag__item">#스트레스</li>
