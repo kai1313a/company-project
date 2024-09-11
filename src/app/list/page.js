@@ -1,8 +1,11 @@
 'use client';
 
 import { useState } from 'react';
+import Modal from '../component/Modal';
+
 
 function ListPage() {
+
     const [dummyData] = useState([
         {
             id: 1,
@@ -168,7 +171,10 @@ function ListPage() {
                 </ul>
             </div>
 
-            <button className="add-button">+</button>
+
+            <Modal> 
+                <div>Hello World</div>
+            </Modal>
         </div >
     );
 }
