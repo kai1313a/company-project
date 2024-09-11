@@ -3,8 +3,10 @@
 @tailwind utilities;
 
 @import 'mixin';
+@import 'reset';
 @import 'join';
 @import 'intro';
+@import 'list';
 
 :root {
   --main01: #4DF5C3;
@@ -41,12 +43,6 @@ body {
   .text-balance {
     text-wrap: balance;
   }
-}
-
-body .flex {
-  max-width: 720px;
-  margin: 0 auto;
-  background-color: #fff !important;
 }
 
 

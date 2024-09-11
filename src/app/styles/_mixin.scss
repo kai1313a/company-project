@@ -1,23 +1,57 @@
-@mixin vw-mo($property, $val, $device-width: 720) {
-    @media (max-width: $device-width + px) {
+@mixin vw-mo($property, $pixel...) {
+    $px: (
+    );
+$vw: (
+);
 
-        @if $property ==margin-bottom or $property ==margin-top or $property ==margin-left or $property ==margin-right or $property ==padding-bottom or $property ==padding-top or $property ==padding-left or $property ==padding-right or $property ==width or $property ==gap or $property ==height or $property ==font-size or $property ==top or $property ==bottom or $property ==left or $property ==right {
-            #{$property}: calc(($val / $device-width) * 100vw);
-        }
+@for $i from 0 to length($pixel) {
+    @if type-of(nth($pixel, $i + 1))==number {
+        $px: append($px, nth($pixel, $i + 1) * 1px, $separator: comma);
+        $vw: append($vw, calc(nth($pixel, $i + 1) * 100 / $mo-max) * 1vw, $separator: comma);
+    }
 
-        @else if $property ==padding or $property ==margin {
-            $values: (
-            );
+    @else if type-of(nth($pixel, $i + 1))==list {
+        $px1: (
+        );
+    $vw1: (
+    );
 
-        @for $i from 1 through length($val) {
-            $values: append($values, calc(nth($val, $i) / $device-width) * 100vw);
-        }
+@each $value in nth($pixel, $i + 1) {
+    @if type-of($value)==number {
+        $px1: append($px1, $value * 1px, $separator: space);
+        $vw1: append($vw1, calc($value * 100 / $mo-max) * 1vw, $separator: space);
+    }
 
-        #{$property}: $values;
+    @else {
+        $px1: append($px1, $value, $separator: space);
+        $vw1: append($vw1, $value, $separator: space);
     }
 }
+
+$px: append($px, $px1, $separator: comma);
+$vw: append($vw, $vw1, $separator: comma);
 }
 
-@mixin px-value($property, $val) {
-    #{$property}: #{$val}px;
+@else {
+    $px: append($px, nth($pixel, $i + 1), $separator: comma);
+    $vw: append($vw, nth($pixel, $i + 1), $separator: comma);
 }
+}
+
+@media (max-width: $mo-max + px) {
+    // 720px 이하일 때만 vw 적용
+    #{$property}: $vw;
+}
+
+@media (min-width: ($mo-max + 1) + px) {
+    // 720px 초과일 때 px 값 유지
+    #{$property}: $px;
+}
+}
+
+@function vw-mo($pixel) {
+    $result: calc($pixel * 100 / $mo-max) * 1vw;
+    @return $result;
+}
+
+$mo-max: 720;
