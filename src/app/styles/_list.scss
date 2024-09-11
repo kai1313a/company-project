@@ -1,0 +1,251 @@
+.list {
+    background-color: #fff;
+
+    .inner {
+        margin: 0 20px;
+        @include vw-mo(margin, 0 20);
+    }
+
+    .Header-list {
+        background-color: var(--main01);
+        @include vw-mo(padding, 20);
+        margin-bottom: 20px;
+        @include vw-mo(margin-bottom, 20);
+        padding-bottom: 20px;
+        @include vw-mo(padding-bottom, 20);
+
+        &__menu {
+            padding: 18px 0 11px 0;
+            @include vw-mo(padding, 18 0 11 0);
+        }
+
+        &__search {
+            width: 100%;
+            margin: 0 20px;
+            @include vw-mo(margin, 0 20);
+
+            &::after {
+                content: '';
+                position: absolute;
+                top: 50%;
+                right: 18px;
+                @include vw-mo(right, 18);
+                transform: translateY(-50%);
+                background: url('/image/list/list-icon-search.png') no-repeat center/cover;
+                width: 26px;
+                height: 26px;
+                @include vw-mo(width, 26);
+                @include vw-mo(height, 26);
+
+            }
+
+            .Header-list__input {
+                display: block;
+                color: #000;
+                width: 100%;
+                border-radius: 76px;
+                @include vw-mo(border-radius, 76);
+                background: rgba(255, 255, 255, 0.6000000238418579);
+                padding: 7px 18px 7px 18px;
+                @include vw-mo(padding, 7 18 7 18);
+
+            }
+        }
+    }
+
+    .filter-sort {
+        gap: 15px;
+        @include vw-mo(gap, 15);
+        margin-bottom: 20px;
+        @include vw-mo(margin-bottom, 20);
+
+        .sort {
+            select {
+                font-size: 0;
+                background: transparent;
+                border: none;
+                outline: none;
+                cursor: pointer;
+                display: block;
+                background: url('/image/list/list-icon-filter.png') no-repeat center/cover;
+                width: 20px;
+                height: 20px;
+                @include vw-mo(width, 20);
+                @include vw-mo(height, 20);
+
+                &::after {
+                    content: '';
+
+                }
+            }
+        }
+
+        .filter {
+            gap: 10px;
+            @include vw-mo(gap, 10);
+            color: var(--grey);
+            line-height: 25px;
+            @include vw-mo(line-height, 25);
+
+            &__button {
+                padding: 0 10px;
+                @include vw-mo(padding, 0 10);
+                background-color: var(--main04);
+                border-radius: 5px;
+                @include vw-mo(border-radius, 5);
+                font-size: 14px;
+                @include vw-mo(font-size, 14);
+                line-height: 25px;
+                @include vw-mo(line-height, 25);
+
+                &.active {
+                    background-color: var(--main03);
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+
+    .mem-list {
+        margin-left: 39px;
+        @include vw-mo(margin-left, 39);
+
+        .mem-item {
+            &.disabled {
+                opacity: .3;
+
+                .expired-label {
+                    color: var(--grey) !important;
+                }
+            }
+
+            box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1),
+            inset 2px 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 16px 15px 16px 54px;
+            @include vw-mo(padding, 16 15 16 54);
+            border-radius: 10px;
+            @include vw-mo(border-radius, 10);
+
+            &__profile {
+                position: absolute;
+                top: 50%;
+                left: -39px;
+                @include vw-mo(left, -39);
+                transform: translateY(-50%);
+                width: 78px;
+                @include vw-mo(width, 78);
+                height: 91px;
+                @include vw-mo(height, 91);
+                padding: 12px;
+                @include vw-mo(padding, 12);
+                background-color: #f2f2f2;
+                border-radius: 39px;
+                @include vw-mo(border-radius, 39);
+
+
+                .img-box {
+                    width: 56px;
+                    @include vw-mo(width, 56);
+                    height: 56px;
+                    @include vw-mo(height, 56);
+                    margin-bottom: -5px;
+                    @include vw-mo(margin-bottom, -5);
+                }
+
+                .profile-name {
+                    height: 18px;
+                    @include vw-mo(height, 18);
+                    line-height: 18px;
+                    @include vw-mo(line-height, 18);
+                    font-size: 11px;
+                    @include vw-mo(font-size, 11);
+                    padding: 0 6px;
+                    @include vw-mo(padding, 0 6);
+                    font-weight: 500;
+                    color: var(--grey);
+                    background-color: #fff;
+                    border-radius: 23px;
+                    @include vw-mo(border-radius, 23);
+                }
+            }
+
+            &__content {
+                width: 100%;
+
+                .mem-item__wrap {
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        bottom: -10px;
+                        @include vw-mo(bottom, -10);
+                        background-color: var(--MiddleGrey02);
+                        width: 100%;
+                        height: 1px;
+                    }
+
+                    margin-bottom: 20px;
+                    @include vw-mo(margin-bottom, 20);
+
+                    .mem-item__box {
+                        .mem-item__title {
+                            margin-bottom: 10px;
+                            @include vw-mo(margin-bottom, 10);
+                            font-size: 16px;
+                            @include vw-mo(font-size, 16);
+                            font-weight: 600;
+                            line-height: 16px;
+                            @include vw-mo(line-height, 16);
+                        }
+
+                        .mem-item__prcpation {
+                            font-size: 11px;
+                            @include vw-mo(font-size, 11);
+                            font-weight: 500;
+                            line-height: 16px;
+                            @include vw-mo(line-height, 16);
+                            color: var(--grey);
+
+                            span {
+                                color: var(--main01);
+                            }
+                        }
+
+                        .mem-item__price {
+                            font-size: 11px;
+                            @include vw-mo(font-size, 11);
+                            font-weight: 500;
+                            line-height: 16px;
+                            @include vw-mo(line-height, 16);
+                        }
+
+                        .mem-item__time {
+                            font-size: 11px;
+                            @include vw-mo(font-size, 11);
+                            font-weight: 500;
+                            line-height: 16px;
+                            @include vw-mo(line-height, 16);
+
+                            span {
+                                color: var(--main01);
+                            }
+                        }
+                    }
+                }
+
+                .mem-item__tags {
+                    padding: 0 6px;
+                    @include vw-mo(padding, 0 6);
+                    font-size: 11px;
+                    @include vw-mo(font-size, 11);
+                    font-weight: 500;
+                    line-height: 16px;
+                    @include vw-mo(line-height, 16);
+                    color: var(--grey);
+                    background-color: var(--main04);
+                    border-radius: 5px;
+                    @include vw-mo(border-radius, 5);
+                }
+            }
+        }
+    }
+}

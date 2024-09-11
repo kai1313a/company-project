@@ -1,0 +1,78 @@
+.meal {
+    width: 100%;
+    padding: 85px 20px 0 20px;
+    @include vw-mo(padding, 85 20 0 20);
+
+    &__title {
+        font-size: 30px;
+        @include vw-mo(font-size, 30);
+
+        .userName {
+            color: #4DF5C3;
+        }
+
+        .companyUser {
+            position: relative;
+            z-index: 0;
+        }
+    }
+
+    &-list {
+        gap: 20px;
+        @include vw-mo(gap, 20);
+        margin: 35px 0 35px 0;
+        @include vw-mo(margin, 35 0 35 0);
+
+        .meal-item {
+            width: 100%;
+            height: 115px;
+            @include vw-mo(height, 115);
+
+            &.meal-item--color {
+                z-index: 0;
+
+                &::after {
+                    background: linear-gradient(135deg, #abffe6 0%, #42f3be 100%);
+                    opacity: 1;
+                    z-index: -1;
+                }
+            }
+
+            &__link {
+                width: 100%;
+                height: 115px;
+                padding: 20px 0 44px 20px;
+                @include vw-mo(height, 115);
+                @include vw-mo(padding, 20 0 44 20);
+
+                .meal-item__title {
+                    font-size: 20px;
+                    @include vw-mo(font-size, 20)
+                }
+
+                .img-box {
+                    width: 77px;
+                    height: 75px;
+                    @include vw-mo(width, 77);
+                    @include vw-mo(height, 75);
+                }
+            }
+        }
+
+    }
+
+    &__banner {
+        background: linear-gradient(135deg, #e2e2e2 0%, #666666 100%);
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #e2e2e2 0%, #666666 100%);
+            border-radius: 10px;
+        }
+    }
+}

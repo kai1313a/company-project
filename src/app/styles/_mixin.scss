@@ -1,0 +1,57 @@
+@mixin vw-mo($property, $pixel...) {
+    $px: (
+    );
+$vw: (
+);
+
+@for $i from 0 to length($pixel) {
+    @if type-of(nth($pixel, $i + 1))==number {
+        $px: append($px, nth($pixel, $i + 1) * 1px, $separator: comma);
+        $vw: append($vw, calc(nth($pixel, $i + 1) * 100 / $mo-max) * 1vw, $separator: comma);
+    }
+
+    @else if type-of(nth($pixel, $i + 1))==list {
+        $px1: (
+        );
+    $vw1: (
+    );
+
+@each $value in nth($pixel, $i + 1) {
+    @if type-of($value)==number {
+        $px1: append($px1, $value * 1px, $separator: space);
+        $vw1: append($vw1, calc($value * 100 / $mo-max) * 1vw, $separator: space);
+    }
+
+    @else {
+        $px1: append($px1, $value, $separator: space);
+        $vw1: append($vw1, $value, $separator: space);
+    }
+}
+
+$px: append($px, $px1, $separator: comma);
+$vw: append($vw, $vw1, $separator: comma);
+}
+
+@else {
+    $px: append($px, nth($pixel, $i + 1), $separator: comma);
+    $vw: append($vw, nth($pixel, $i + 1), $separator: comma);
+}
+}
+
+@media (max-width: $mo-max + px) {
+    // 720px 이하일 때만 vw 적용
+    #{$property}: $vw;
+}
+
+@media (min-width: ($mo-max + 1) + px) {
+    // 720px 초과일 때 px 값 유지
+    #{$property}: $px;
+}
+}
+
+@function vw-mo($pixel) {
+    $result: calc($pixel * 100 / $mo-max) * 1vw;
+    @return $result;
+}
+
+$mo-max: 720;
