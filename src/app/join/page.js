@@ -14,7 +14,7 @@ export default function Join() {
     return (
         <div className="wrap flex flex-col items-center min-h-screen bg-white">
             <main className="meal">
-                <h2 className="meal__title text-black font-semibold jua">
+                <h2 className="meal__title text-black font-semibold">
                     오늘도 존버 <span className="userName">{userName}</span>님<br />
                     건강한 <span className="relative companyUser after:absolute after:bottom-0 after:left-0 after:w-full after:h-[10px] after:bg-[#4DF5C3] after:z-[-1]">회사세끼</span> 되세요.
                 </h2>
