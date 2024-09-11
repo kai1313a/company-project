@@ -34,12 +34,6 @@
   }
 }
 
-body {
-  color: var(--black);
-  background: var(--white);
-}
-
-
 @layer utilities {
   .text-balance {
     text-wrap: balance;
