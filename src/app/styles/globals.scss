@@ -127,6 +127,7 @@ body {
 .wrap {
   margin: 0 auto;
   max-width: 600px;
+  min-width: 320px;
   @include vw-mo(max-width, 600);
   background-color: transparent;
   border-right: 1px solid var(--LightGrey);
