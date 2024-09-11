@@ -17,6 +17,20 @@
         &__menu {
             padding: 18px 0 11px 0;
             @include vw-mo(padding, 18 0 11 0);
+            font-size: 18px;
+            @include vw-mo(font-size, 18);
+
+            &::after {
+                content: '';
+                display: inline-flex;
+                width: 18px;
+                @include vw-mo(width, 18);
+                height: 9px;
+                @include vw-mo(height, 9);
+                margin-left: 10px;
+                @include vw-mo(margin-left, 10);
+                background: url('/image/list/list-icon-arrow_down.png') no-repeat center/contain;
+            }
         }
 
         &__search {
@@ -65,9 +79,8 @@
                 background: transparent;
                 border: none;
                 outline: none;
-                cursor: pointer;
                 display: block;
-                background: url('/image/list/list-icon-filter.png') no-repeat center/cover;
+                background: url('/image/list/list-icon-filter.png') no-repeat center/contain;
                 width: 20px;
                 height: 20px;
                 @include vw-mo(width, 20);

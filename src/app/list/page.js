@@ -9,9 +9,9 @@ function ListPage() {
             userName: 'yenny',
             title: '떡볶이 먹을사람 괌',
             ptcpation: '5',
-            price: '10,000원',
-            time: '2024-08-29T11:30:00',
-            tags: ['#스트레스', '#맵고수', '#분식', '#배달'],
+            price: '10,000',
+            time: '2024-11-29T11:30:00',
+            tags: ['스트레스', '맵고수', '분식', '배달'],
             status: '진행중',
             image: '/image/list/dummy.png',
         },
@@ -20,9 +20,9 @@ function ListPage() {
             userName: 'Henry',
             title: '해장이 필요',
             ptcpation: '3',
-            price: '30,000원',
-            time: '2024-08-28T18:30:00',
-            tags: ['#국물', '#해장', '#국밥', '#배달'],
+            price: '30,000',
+            time: '2024-12-28T18:30:00',
+            tags: ['국물', '해장', '국밥', '배달'],
             status: '진행중',
             image: '/image/list/dummy2.png',
         },
@@ -31,9 +31,9 @@ function ListPage() {
             userName: 'kai',
             title: '피자 먹을 사람',
             ptcpation: '3',
-            price: '20,000원',
+            price: '20,000',
             time: '2024-08-26T11:30:00',
-            tags: ['#국물', '#해장', '#국밥', '#배달'],
+            tags: ['국물', '해장', '국밥', '배달'],
             status: '종료',
             image: '/image/list/dummy2.png',
         },
@@ -42,9 +42,9 @@ function ListPage() {
             userName: '백인',
             title: '국밥 먹을 사람',
             ptcpation: '2',
-            price: '20,000원',
+            price: '20,000',
             time: '2024-08-26T11:30:00',
-            tags: ['#국물', '#해장', '#국밥', '#배달'],
+            tags: ['국물', '해장', '국밥', '배달'],
             status: '종료',
             image: '/image/list/dummy2.png',
         },
@@ -53,9 +53,9 @@ function ListPage() {
             userName: '흑인',
             title: '피자 먹을 사람',
             ptcpation: '5',
-            price: '30,000원',
+            price: '30,000',
             time: '2024-08-26T11:30:00',
-            tags: ['#국물', '#해장', '#국밥', '#배달'],
+            tags: ['국물', '해장', '국밥', '배달'],
             status: '종료',
             image: '/image/list/dummy2.png',
         },
@@ -110,9 +110,8 @@ function ListPage() {
             <div className="inner">
                 <div className="filter-sort flex items-center">
                     <div className="sort">
-                        <select value={sortBy} onChange={e => setSortBy(e.target.value)}>
-                            <option value="최신순">최신순</option>
-                            <option value="마감임박순">마감임박순</option>
+                        <select>
+
                         </select>
                     </div>
                     <div className="filter flex">
@@ -153,7 +152,7 @@ function ListPage() {
                                         <p className='mem-item__prcpation text-black'>참여 <span>{item.ptcpation}</span>명</p>
                                     </div>
                                     <div className="mem-item__box flex justify-between">
-                                        {item.price && <p className="mem-item__price text-black">예상금액 : 1인당 {item.price}</p>}
+                                        {item.price && <p className="mem-item__price text-black">예상금액 : 1인당 {item.price}원</p>}
                                         <p className="mem-item__time text-black">
                                             {isExpired(item.time) ? (
                                                 <span className="expired-label text-black">종료</span>
@@ -164,7 +163,7 @@ function ListPage() {
                                     </div>
                                 </div>
                                 {item.tags.map(tag =>
-                                    <span key={tag} className="mem-item__tags text-black">{tag.replace('#', '')}</span>
+                                    <span key={tag} className="mem-item__tags text-black">{tag.replace('', '#')}</span>
                                 )}
                             </div>
                         </li>
