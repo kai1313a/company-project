@@ -42,7 +42,7 @@ export default function intro() {
     }, []);
     
     return (
-        <div className='intro wrap min-h-screen items-center justify-center'>
+        <div className='intro wrap min-h-screen items-center'>
            
             <div className={`cover flex-col items-center justify-center ${!visible ? 'off' : ''}`}>
                 <h1 className='cover__title jua animate__animated animate__fadeIn'>우리 회사 건강한 식문화</h1>
@@ -78,6 +78,8 @@ export default function intro() {
                 </div>
                 <button className='login__btn'>입장하기</button>
             </div>
+
+        
         </div>
     );
 }
