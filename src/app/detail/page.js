@@ -49,7 +49,7 @@ export default function detail() {
                                         <button className="btn_photo">사진 업로드</button>
                                     </div>
 
-                                    <a href="" className="btn_share">
+                                    <a href="" className="btn_link">
                                         <span className="blind">공유하기</span>
                                     </a>
                                 </div>
