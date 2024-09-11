@@ -40,6 +40,11 @@
   }
 }
 
+body {
+  color: var(--black);
+  background: var(--white);
+}
+
 
 @font-face {
   font-family: 'notosans';
