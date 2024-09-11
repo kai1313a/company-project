@@ -24,7 +24,7 @@
                     width: 359px; @include vw-mo(width, 359);
 
                     .detail-menu__top {
-                        margin-bottom: 15px; @include vw-mo(margin-bottom, 15); @include vw-mo(padding-bottom, 8); border-bottom: 1px solid var(--MiddleGrey02);
+                        margin-bottom: 15px; @include vw-mo(margin-bottom, 15); padding-bottom: 8px; @include vw-mo(padding-bottom, 8); border-bottom: 1px solid var(--MiddleGrey02);
 
                         .detail-menu__inner {
                             @include vw-mo(margin-bottom, 8);
