@@ -133,3 +133,9 @@ body {
   border-right: 1px solid var(--LightGrey);
   border-left: 1px solid var(--LightGrey);
 }
+
+@media screen and (max-width: 320px) {
+  .wrap {
+    overflow-x: scroll;
+  }
+}
