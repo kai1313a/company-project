@@ -33,9 +33,9 @@ export default function detail() {
 
                                         <div className="vote_box">
                                             <button className="btn_vote">투표 하기</button>
-                                            <p className="icon_person">
+                                            <button className="icon_person">
                                                 <span className="person_num">1</span>
-                                            </p>
+                                            </button>
                                         </div>
                                     </div>
                                     
