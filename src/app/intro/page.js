@@ -63,7 +63,7 @@ export default function intro() {
             </div>
 
             <div className='login'>
-                <h2 className='login__title'>프로필 사진과<br/>닉네임을 등록해주세요.</h2>
+                <h2 className='login__title text-6xl eㄷ다'>프로필 사진과<br/>닉네임을 등록해주세요.</h2>
                 <div className='login__profile' onChange={handleImageChange}>
                     <div className='login__img-wrap' >
                         <img className='login__img' src={image} alt="프로필 이미지"/>
