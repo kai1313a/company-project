@@ -129,7 +129,7 @@ export default function make() {
                 
                     <button type="submit" className="btn_submit">등록완료</button>
                 </form>
-                <button type="button"><image src=""/></button>
+                <button type="button" className="close_btn"><img src="/image/make/modal_close.png"/></button>
             </div>
         </div>
       </div>
