@@ -1,4 +1,18 @@
+'use client';
+
+import { useState } from "react";
+import Link from 'next/link';
+
 export default function detail() {
+
+    const [like, setLike] = useState(0);
+    const [isLike, setIsLike] = useState(false);
+
+    const onLikeButtonClick = () => {
+        setLike(like + (isLike ? -1 : 1));
+        setIsLike(!isLike);
+    }
+
     return (
         <div className="wrap">
             <div className="detail">
@@ -7,11 +21,13 @@ export default function detail() {
                         <span className="blind">공유하기</span>
                     </button>
 
-                    <span className="title">떡볶이 먹을사람 괌</span>
+                    <div className="title">
+                       111
+                    </div>
 
-                    <button className="btn_write">
+                    <Link href="/component/make" className="btn_write">
                         <span className="blind">글쓰기</span>
-                    </button>
+                    </Link>
                 </div>
 
                 <div className="detail_tag">
@@ -32,10 +48,11 @@ export default function detail() {
                                         <strong className="name">메뉴 이름</strong>
 
                                         <div className="vote_box">
-                                            <button className="btn_vote">투표 하기</button>
-                                            <button className="icon_person">
-                                                <span className="person_num">1</span>
+                                            <button className={!isLike ? 'btn_vote' : 'btn_vote active'} onClick={onLikeButtonClick}>
+                                                {!isLike ? '투표하기' : '투표완료'}
                                             </button>
+                                            <button className="icon_person"></button>
+                                            <span className="person_num">{like}</span>
                                         </div>
                                     </div>
                                     
