@@ -1,7 +1,8 @@
 'use client'
 
 import 'animate.css';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect} from 'react';
+import { useForm } from 'react-hook-form';
 
 export default function intro() {
 
@@ -41,6 +42,26 @@ export default function intro() {
         return () => clearTimeout(timer);
     }, []);
     
+
+    //login시 localstorage에 저장
+    const {register, getValues} = useForm();
+
+    const onLoginBtnClick = () => {
+        const user = getValues();
+        if(localStorage.getItem('users')) { //이미 user 정보가 있을 때ß
+            const users = JSON.parse(localStorage.getItem('users') || '[]');
+            const allUsers = [...users,user]
+            localStorage.setItem('users', JSON.stringify(allUsers));
+            window.location.replace('/join')
+        } else { //user 정보가 없을 때
+            localStorage.setItem('users', JSON.stringify(user));
+        }
+       
+       
+        console.log('user info', user);
+
+    } 
+
     return (
         <div className='intro wrap'>
            
@@ -65,18 +86,36 @@ export default function intro() {
             <div className='login'>
                 <h2 className='login_title'>프로필 사진과<br/>닉네임을 등록해주세요.</h2>
                 <div className='login_profile' onChange={handleImageChange}>
-                    <div className='login__img_wrap' >
+                    <div className='login_img_wrap' >
                         <img className='login_img' src={image} alt="프로필 이미지"/>
                     </div>
-                    <input id='loginImgInput' className='login_img_input' type="file" accept="image/*"/>
-                    <label htmlFor="loginImgInput" className='login_img_label'></label>
+                    <input
+                        id='loginImgInput'
+                        className='login_img_input'
+                        type='file'
+                        accept='image/*'
+                        {...register('image')}    
+                    />
+                    <label htmlFor='loginImgInput' className='login_img_label'></label>
                     <button className={`login_img_delete ${!file ? '' : 'show'}`} type="button" onClick={handleCancel} title="기본 이미지로 변경"></button>
                 </div>
                 <div className='login_name'>
-                    <input className='login_name_input' type='text' placeholder='닉네임을 입력해주세요.'></input>
+                    <input
+                        id='loginName'
+                        className='login_name_input'
+                        type='text'
+                        placeholder='닉네임을 입력해주세요.'
+                        {...register('loginName')} 
+                        required
+                    />
                     <p className='login_name_check'>사용 가능한 닉네임 입니다.</p>
                 </div>
-                <button className='login_btn'>입장하기</button>
+                <button
+                    className='login_btn'
+                    type='button'
+                    onClick={()=>onLoginBtnClick()}>
+                    입장하기
+                </button>
             </div>
         </div>
     );
