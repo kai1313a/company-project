@@ -5,6 +5,7 @@
         display: flex; justify-content: space-between; align-items: center; background-color: var(--main01); margin-bottom: 15px; padding: 20px;
 
         .title {color: #fff; font-size: 20px; line-height: 22px; text-align: left;}
+        input {color: #fff; font-size: 20px; line-height: 22px; background-color: var(--main01); text-align: center;}
         .btn_share {width: 19px; height: 22px; background: url('../../../public/image/header/icon_share.png') no-repeat;}
         .btn_write {width: 20px; height: 20px; background: url('../../../public/image/header/icon_writer.png') no-repeat;}
     }
@@ -15,9 +16,13 @@
         &::before {display: inline-block; content: ''; width: 16px; height: 16px; margin-right: 15px; background: url('../../../public/image/detail/icon_tag_mo.png') no-repeat; background-size: 16px 16px; vertical-align: middle;}
 
         .detail_list {
-            display: flex; justify-content: center; align-items: center; gap: 10px;
+            display: flex; justify-content: center; align-items: center; width: calc(100% - 35px); gap: 10px;
 
-            .item {display: inline-flex; justify-content: center; align-items: center; min-width: 55px; height: 25px; padding: 0 10px; background-color: var(--main04, #E3FEF6); border-radius: 5px; color: var(--grey, #666666); font-size: 14px; font-weight: 700; text-align: center;}
+            .item {
+                display: inline-flex; justify-content: center; align-items: center; min-width: 55px; width: auto; height: 25px; margin-left: 10px; padding: 0 10px; background-color: var(--main04, #E3FEF6); border-radius: 5px; color: var(--grey, #666666); font-size: 14px; font-weight: 700; text-align: center;
+
+                &:first-child {margin-left: 0;}
+            }
         }
     }
 
@@ -26,7 +31,7 @@
 
         .title {display: block; margin-bottom: 20px; font-size: 20px; font-weight: 700;}
         .menu_list {
-            display: flex; justify-content: center; align-items: center; width: 100%; gap: 20px; padding-left: 29px;
+            display: flex; justify-content: center; align-items: center; flex-direction: column; width: 100%; gap: 20px; padding-left: 29px;
 
             .item {
                 position: relative; width: 100%; min-width: 320px; height: auto; padding: 16px 15px 16px 42px; box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1), inset 2px 2px 10px rgba(0, 0, 0, 0.1); border-radius: 10px;
@@ -49,7 +54,7 @@
                                 .btn_vote {
                                     width: 72px; height: 25px; background-color: var(--main04); border-radius: 5px; color: var(--main01); font-size: 14px; font-weight: 700; text-align: center;
 
-                                    &.active {background-color: var(--main03); color: var(--main01);}
+                                    &.active {background-color: var(--main03); color: var(--main01); }
                                 }
 
                                 .icon_person {position: relative; display: block; width: 20px; height: 20px; background: url('../../../public/image/detail/icon_person.png') no-repeat;}
@@ -67,10 +72,20 @@
                         .photo_list {
                             display: flex; justify-content: space-between; align-items: center; gap: 15px; margin-left: 0;
 
-                            .btn_photo {width: 60px; height: 60px; background: url('../../../public/image/detail/btn_photo.png') no-repeat; background-size: 60px; @include vw-mo(font-size, 0); text-indent: -9999em;}
+                            .btn_photo {width: 60px; height: 60px; @include vw-mo(font-size, 0); text-indent: -9999em;}
+
+                            .photo_none {
+                                display: flex; justify-content: space-between; align-items: center;
+                                span {margin-left: 5px; color: var(--MiddleGrey01); font-size: 11px;}
+                            }
                         }
 
-                        .btn_link {width: 25px; height: 25px; background: url('../../../public/image/detail/btn_link.png') no-repeat;}
+                        .btn_link {
+                            width: 25px; height: 25px;
+
+                            &.active {background: url('../../../public/image/detail/btn_link.png') no-repeat; background-size: 25px 25px;}
+                            &.disabled {background: url('../../../public/image/detail/btn_link_disabled.png') no-repeat; background-size: 25px 25px; pointer-events: none;}
+                        }
                     }
                 }
             }
