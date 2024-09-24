@@ -175,7 +175,7 @@ export default function detail() {
                                                 item.images.length !== 0 ? (
                                                     item.images.map((image, index) =>
                                                         <li key={index}>
-                                                            <img src={image} alt={item.alts.map((ele, index) => ele)} />
+                                                            <img src={image} alt={item.alts[index]} />
                                                         </li>
                                                     )
                                                 ) : (
