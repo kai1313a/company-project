@@ -6,9 +6,9 @@ export default async function handler(요청, 응답) {
             return 응답.status(500).json('제목쓰셈')
         }
         const client = await connectDB;
-        const db = client.db("behind")
-        let result = await db.collection('ask').insertOne(요청.body) //insertOne DB에 전송
-        return 응답.status(200).redirect('/')
+        const db = client.db("teamproject")
+        let result = await db.collection('list').insertOne(요청.body) //insertOne DB에 전송
+        return 응답.status(200).redirect('/list')
         
         
     }

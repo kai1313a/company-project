@@ -3,8 +3,13 @@
 import { Input } from "postcss";
 import Image from "next/image";
 import { useState } from 'react';
+// import Controller from '../controller/Controller.js';
 
 export default function make() {
+    
+    const[selectedOption, setselectedOption] = useState('');
+
+    // const controllerValue = Controller('intro');
 
     const defaultImageUrl = '/image/make/upload_basic.png'; //기본 이미지 경로
     
@@ -35,17 +40,68 @@ export default function make() {
       <div className="sec_make">
         <div className="wrap">
             <div className="container">
-                <form action="/api/post/new" method="POST">
+                <form action="/api/post/make" method="POST">
+                    <div className="info_area">
+                        <p className="info_title">카테고리</p>
+                        <ul className="info_cate">
+                            <li className="list_item">
+                               <label>
+                                    <input 
+                                    name="category"
+                                    type="radio" 
+                                    value="아침"
+                                    checked={selectedOption === '아침'}
+                                    onChange={(e) => setselectedOption(e.target.value)}
+                                    />
+                                    <span className="peer">아침</span>
+                               </label>
+                            </li>
+                            <li className="list_item">
+                                <label>
+                                    <input 
+                                    name="category"
+                                    type="radio" 
+                                    value="점심"
+                                    checked={selectedOption === '점심'}
+                                    onChange={(e) => setselectedOption(e.target.value)}
+                                    />
+                                    <span className="peer">점심</span>
+                               </label>
+                            </li>
+                            <li className="list_item">
+                                <label>
+                                    <input 
+                                    name="category"
+                                    type="radio" 
+                                    value="저녁·회식"
+                                    checked={selectedOption === '저녁·회식'}
+                                    onChange={(e) => setselectedOption(e.target.value)}
+                                    />
+                                    <span className="peer">저녁·회식</span>
+                               </label>
+                            </li>
+                            <li className="list_item">
+                                <label>
+                                    <input 
+                                    name="category"
+                                    type="radio" 
+                                    value="음료·디저트"
+                                    checked={selectedOption === '음료·디저트'}
+                                    onChange={(e) => setselectedOption(e.target.value)}
+                                    />
+                                    <span className="peer">음료·디저트</span>
+                               </label>
+                            </li>
+                        </ul>
+                    </div>
                     <div className="info_area">
                         <p className="info_title">방정보</p>
                         <ul className="info_list">
                             <li className="list_item">
-                                {/* <label className="item_tit" htmlFor="title"></label> */}
-                                <input type="text" placeholder="방제목" id="title" required/>
+                                <input type="text" name="title" placeholder="방제목" id="title" required/>
                             </li>
                             <li className="list_item">
-                                {/* <label className="item_tit" htmlFor="tag"></label> */}
-                                <input type="text" placeholder="#태그 (5개까지 입력)" id="tag" required/>
+                                <input type="text" name="hash" placeholder="#태그 (5개까지 입력)" id="tag" required/>
                             </li>
                         </ul>
                     </div>
@@ -57,22 +113,15 @@ export default function make() {
                                 <input type="text" placeholder="메뉴이름" id="name" required/>
                             </li>
                             <li className="list_item">
-                                {/* <label className="item_tit" htmlFor="price"></label> */}
                                 <input type="text" placeholder="예상금액" id="price" required/>
                             </li>
                             <li className="list_item">
-                                {/* <label className="item_tit" htmlFor="adressurl"></label> */}
                                 <input type="text" placeholder="URL" id="adressurl" required/>
                             </li>
-                            {/* <a href="#" >
-                                <Image  width={150} height={150} alt="프로필 이미지" />
-                            </a>
-                        
-                            <label htmlhtmlFor="input-file" >이미지 선택</label> */}
 
                             <div className='list_pic' onChange={handleImageChange}>
                                 <div className='img_wrap'>
-                                    <img className='list_img' src={image} alt="프로필 이미지"/>
+                                    <img className='list_img' src={image} alt="리스트 업로드 이미지"/>
                                     <label htmlFor="loginImgInput" className='img_label'>
                                     </label>
                                     <button className={`img_delete ${!file ? '' : 'show'}`} type="button" onClick={handleCancel} title="기본 이미지로 변경"></button>

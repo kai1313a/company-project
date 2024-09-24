@@ -3,6 +3,19 @@
     .info_area {
         padding: 20px 0;
         .info_title {margin-bottom: 11px; font-size: 16px; font-weight: 700;}
+        
+        // 카테고리
+        .info_cate {
+            display: flex; gap: 11px; align-items: center;
+
+            .list_item {
+                input {display: none;}
+                label input + span {padding: 6px 8px; font-size: 14px; font-weight: 500; color: #4DF5C3; background-color: #E3FEF6; border-radius: 5px;}
+                label > input:checked + span {color: #fff; background-color: #4DF5C3;}
+            }
+        }
+        
+        // 메뉴
         .info_list{
             
             .list_item {
