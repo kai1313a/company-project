@@ -7,7 +7,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import Modal02 from '../component/Modal02';
 
-export default function detail() {
+export default function Detail() {
 
     const [like, setLike] = useState(0);
     // const [isLike, setIsLike] = useState(false);
@@ -16,7 +16,7 @@ export default function detail() {
     //     setLike(like + (isLike ? -1 : 1));
     //     setIsLike(!isLike);
     // }
-    
+
     const [isActive, setIsActive] = useState(true);
     const toggleIsActive = (i, prev) => {
         setIsActive(i);
@@ -26,30 +26,30 @@ export default function detail() {
 
     const tagSlideData = [
         {
-          id: 1,
-          text: '#테스트 테스트',
+            id: 1,
+            text: '#테스트 테스트',
         },
         {
-          id: 2,
-          text: '#테스트 테스트',
+            id: 2,
+            text: '#테스트 테스트',
         },
         {
-          id: 3,
-          text: '#테스트 테스트',
+            id: 3,
+            text: '#테스트 테스트',
         },
         {
-          id: 4,
-          text: '#테스트 테스트',
+            id: 4,
+            text: '#테스트 테스트',
         },
         {
-          id: 5,
-          text: '#테스트 테스트',
+            id: 5,
+            text: '#테스트 테스트',
         }
     ];
 
     const [dummyData] = useState(
         {
-            menu : [
+            menu: [
                 {
                     id: 1,
                     title: '엽기떡볶이',
@@ -57,7 +57,7 @@ export default function detail() {
                     price: '10,000',
                     votes: false,
                     images: ['../../image/detail/btn_photo.png', '../../image/detail/btn_photo.png'],
-                    alts : ['1', '2'],
+                    alts: ['1', '2'],
                     url: 'https://www.naver.com/'
                 },
                 {
@@ -67,7 +67,7 @@ export default function detail() {
                     price: '30,000',
                     votes: false,
                     images: ['../../image/detail/btn_photo.png'],
-                    alts : ['1'],
+                    alts: ['1'],
                     url: 'https://www.google.com/'
                 },
                 {
@@ -77,7 +77,7 @@ export default function detail() {
                     price: '15,000',
                     votes: false,
                     images: [],
-                    alts : [],
+                    alts: [],
                     url: 'https://www.google.com/'
                 },
                 {
@@ -87,7 +87,7 @@ export default function detail() {
                     price: '25,000',
                     votes: false,
                     images: [],
-                    alts : [],
+                    alts: [],
                     url: 'https://www.google.com/'
                 },
             ]
@@ -115,95 +115,95 @@ export default function detail() {
                 </div>
 
                 <div className="tag">
-                <div className="swiper-container tag_list">
-                    <Swiper
-                        slidesPerView={'auto'} // 보여질 슬라이스 수
-                    >
-                        {tagSlideData.map((slide) => (
-                            <SwiperSlide key={slide.id} className="item">          
-                                <div>
-                                    <div>{slide.text}</div>
-                                </div>
-                            </SwiperSlide>
-                        ))}
-                    </Swiper>
+                    <div className="swiper-container tag_list">
+                        <Swiper
+                            slidesPerView={'auto'} // 보여질 슬라이스 수
+                        >
+                            {tagSlideData.map((slide) => (
+                                <SwiperSlide key={slide.id} className="item">
+                                    <div>
+                                        <div>{slide.text}</div>
+                                    </div>
+                                </SwiperSlide>
+                            ))}
+                        </Swiper>
                     </div>
                 </div>
 
                 <div className="detail_menu">
                     <h3 className="title">메뉴 목록</h3>
                     <ul className="menu_list">
-                    {
-                        menuListData.menu.map((item, index) => (
-                            <li key={index} className="item">
-                                <span className="num">{item.id}</span>
+                        {
+                            menuListData.menu.map((item, index) => (
+                                <li key={index} className="item">
+                                    <span className="num">{item.id}</span>
 
-                                <div className="info">
-                                    <div className="top">
-                                        <div className="inner">
-                                            <strong className="name">{item.title}</strong>
+                                    <div className="info">
+                                        <div className="top">
+                                            <div className="inner">
+                                                <strong className="name">{item.title}</strong>
 
-                                            <div className="vote_box">
-                                                {/* <button key={item.id} className={!isLike ? 'btn_vote' : 'btn_vote active'} onClick={onLikeButtonClick}>
+                                                <div className="vote_box">
+                                                    {/* <button key={item.id} className={!isLike ? 'btn_vote' : 'btn_vote active'} onClick={onLikeButtonClick}>
                                                     {!isLike ? '투표하기' : '투표완료'}
                                                 </button> */}
 
-                                                <button 
-                                                    value={index}
-                                                    onClick={() => {
-                                                        toggleIsActive(index);
-                                                    }}
-                                                      className={isActive === index ? 'btn_vote active' : 'btn_vote'}
-                                                >
-                                                    {isActive === index ? '투표완료' : '투표하기'}
-                                                </button>
-                                                
-                                                {/* <button className="icon_person"></button> */}
-                                                <Modal02 className="icon_person"> 
-                                                    <div>Hello World222</div>
-                                                </Modal02>
-                                                <span className="person_num">{isActive === index ? like + 1 : like}</span>
+                                                    <button
+                                                        value={index}
+                                                        onClick={() => {
+                                                            toggleIsActive(index);
+                                                        }}
+                                                        className={isActive === index ? 'btn_vote active' : 'btn_vote'}
+                                                    >
+                                                        {isActive === index ? '투표완료' : '투표하기'}
+                                                    </button>
+
+                                                    {/* <button className="icon_person"></button> */}
+                                                    <Modal02 className="icon_person">
+                                                        <div>Hello World222</div>
+                                                    </Modal02>
+                                                    <span className="person_num">{isActive === index ? like + 1 : like}</span>
+                                                </div>
                                             </div>
+
+                                            {item.price && <p className="txt">예상금액 : {item.ptcpation}인당 <span className="price">{item.price}</span>원</p>}
                                         </div>
-                                        
-                                        {item.price && <p className="txt">예상금액 : {item.ptcpation}인당 <span className="price">{item.price}</span>원</p>}
-                                    </div>
-                                    
-                                    <div className="btm">
-                                        <ul className="photo_list">
-                                            {
-                                                item.images.length !== 0 ? (
-                                                    item.images.map((image, index) =>
-                                                        <li key={index}>
-                                                            <img src={image} alt={item.alts[index]} />
+
+                                        <div className="btm">
+                                            <ul className="photo_list">
+                                                {
+                                                    item.images.length !== 0 ? (
+                                                        item.images.map((image, index) =>
+                                                            <li key={index}>
+                                                                <img src={image} alt={item.alts[index]} />
+                                                            </li>
+                                                        )
+                                                    ) : (
+                                                        <li className="photo_none">
+                                                            <img src="../../image/detail/icon_camera.png" alt="카메라" />
+                                                            <span>등록된사진없음</span>
                                                         </li>
                                                     )
+                                                }
+                                            </ul>
+
+                                            {
+                                                item.images.length !== 0 ? (
+                                                    <a href={item.url} target="_blank" className="btn_link active" title="해당 페이지로 이동">
+                                                        <span className="blind">공유하기</span>
+                                                    </a>
                                                 ) : (
-                                                    <li className="photo_none">
-                                                        <img src="../../image/detail/icon_camera.png" alt="카메라" />
-                                                        <span>등록된사진없음</span>
-                                                    </li>
+                                                    <a href={item.url} className="btn_link disabled">
+                                                        <span className="blind">공유하기</span>
+                                                    </a>
                                                 )
                                             }
-                                        </ul>
 
-                                        {
-                                            item.images.length !== 0 ? (
-                                                <a href={item.url} target="_blank" className="btn_link active" title="해당 페이지로 이동">
-                                                    <span className="blind">공유하기</span>
-                                                </a>
-                                            ) : (
-                                                <a href={item.url} className="btn_link disabled">
-                                                    <span className="blind">공유하기</span>
-                                                </a>
-                                            )
-                                        }
-                                        
+                                        </div>
                                     </div>
-                                </div>
-                            </li>
-                        ))
-                    }
+                                </li>
+                            ))
+                        }
                     </ul>
                     {/* <ul className="menu_list">
                         <li className="item">
