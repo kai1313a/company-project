@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
+import Modal02 from '../component/Modal02';
 
 export default function detail() {
 
@@ -46,58 +47,52 @@ export default function detail() {
         }
     ];
 
-    const [dummyData] = useState([
+    const [dummyData] = useState(
         {
-            id: 1,
-            title: '엽기떡볶이',
-            ptcpation: '1',
-            price: '10,000',
-            votes: false,
-            images: ['../../image/detail/btn_photo.png', '../../image/detail/btn_photo.png'],
-            alts : ['1', '2'],
-            url: 'https://www.naver.com/'
-        },
-        {
-            id: 2,
-            title: '죠스떡볶이',
-            ptcpation: '1',
-            price: '30,000',
-            votes: false,
-            images: ['../../image/detail/btn_photo.png'],
-            alts : ['1'],
-            url: 'https://www.google.com/'
-        },
-        {
-            id: 3,
-            title: '배떡',
-            ptcpation: '1',
-            price: '20,000',
-            votes: false,
-            images: [],
-            alts : [],
-            url: ''
-        },
-        {
-            id: 4,
-            title: '빨강오뎅',
-            ptcpation: '1',
-            price: '20,000',
-            votes: false,
-            images: [],
-            alts : [],
-            url: ''
-        },
-        {
-            id: 5,
-            title: '신전떡볶이',
-            ptcpation: '1',
-            price: '15,000',
-            votes: false,
-            images: ['../../image/detail/btn_photo.png'],
-            alts : ['1'],
-            url: 'https://www.naver.com/'
+            menu : [
+                {
+                    id: 1,
+                    title: '엽기떡볶이',
+                    ptcpation: '1',
+                    price: '10,000',
+                    votes: false,
+                    images: ['../../image/detail/btn_photo.png', '../../image/detail/btn_photo.png'],
+                    alts : ['1', '2'],
+                    url: 'https://www.naver.com/'
+                },
+                {
+                    id: 2,
+                    title: '죠스떡볶이',
+                    ptcpation: '1',
+                    price: '30,000',
+                    votes: false,
+                    images: ['../../image/detail/btn_photo.png'],
+                    alts : ['1'],
+                    url: 'https://www.google.com/'
+                },
+                {
+                    id: 3,
+                    title: '죠스떡볶이',
+                    ptcpation: '1',
+                    price: '15,000',
+                    votes: false,
+                    images: [],
+                    alts : [],
+                    url: 'https://www.google.com/'
+                },
+                {
+                    id: 4,
+                    title: '죠스떡볶이22222',
+                    ptcpation: '1',
+                    price: '25,000',
+                    votes: false,
+                    images: [],
+                    alts : [],
+                    url: 'https://www.google.com/'
+                },
+            ]
         }
-    ]);
+    );
 
     const menuListData = dummyData;
 
@@ -119,8 +114,8 @@ export default function detail() {
                     </button>
                 </div>
 
-                <div className="detail_tag">
-                <div className="swiper-container detail_list">
+                <div className="tag">
+                <div className="swiper-container tag_list">
                     <Swiper
                         slidesPerView={'auto'} // 보여질 슬라이스 수
                     >
@@ -139,7 +134,7 @@ export default function detail() {
                     <h3 className="title">메뉴 목록</h3>
                     <ul className="menu_list">
                     {
-                        menuListData.map((item, index) => (
+                        menuListData.menu.map((item, index) => (
                             <li key={index} className="item">
                                 <span className="num">{item.id}</span>
 
@@ -163,7 +158,10 @@ export default function detail() {
                                                     {isActive === index ? '투표완료' : '투표하기'}
                                                 </button>
                                                 
-                                                <button className="icon_person"></button>
+                                                {/* <button className="icon_person"></button> */}
+                                                <Modal02 className="icon_person"> 
+                                                    <div>Hello World222</div>
+                                                </Modal02>
                                                 <span className="person_num">{isActive === index ? like + 1 : like}</span>
                                             </div>
                                         </div>
@@ -177,7 +175,7 @@ export default function detail() {
                                                 item.images.length !== 0 ? (
                                                     item.images.map((image, index) =>
                                                         <li key={index}>
-                                                            <img src={image} alt={item.alts.map((ele, index) => ele)} />
+                                                            <img src={image} alt={item.alts[index]} />
                                                         </li>
                                                     )
                                                 ) : (
