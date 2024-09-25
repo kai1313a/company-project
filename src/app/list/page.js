@@ -172,7 +172,7 @@ function ListPage() {
             </div>
 
 
-            <Modal> 
+            <Modal>
                 <div>Hello World</div>
             </Modal>
         </div >
