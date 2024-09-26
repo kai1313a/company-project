@@ -1,11 +1,19 @@
 'use client'
 
 import 'animate.css';
+import { useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 
 export default function Intro() {
 
+    const router = useRouter();
+
+    if (localStorage.getItem('users')) { //이미 user 정보가 있을 때ß
+        router.push('/join')
+    }
+
+   
     const defaultImageUrl = '/image/intro/profile-common.png'; //기본 이미지 경로
 
     // 프로필 이미지 업로드
@@ -49,12 +57,14 @@ export default function Intro() {
     const onLoginBtnClick = () => {
         const user = getValues();
         if (localStorage.getItem('users')) { //이미 user 정보가 있을 때ß
-            const users = JSON.parse(localStorage.getItem('users') || '[]');
-            const allUsers = [...users, user]
-            localStorage.setItem('users', JSON.stringify(allUsers));
-            window.location.replace('/join')
+            // const users = JSON.parse(localStorage.getItem('users') || '[]');
+            // const allUsers = [...users, user]
+            // localStorage.setItem('users', JSON.stringify(allUsers));
+            
+            // router.push('/join')
         } else { //user 정보가 없을 때
             localStorage.setItem('users', JSON.stringify(user));
+             router.push('/join')
         }
 
 

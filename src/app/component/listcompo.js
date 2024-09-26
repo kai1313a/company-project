@@ -3,84 +3,28 @@
 import { useState } from 'react';
 import Modal from '../component/Modal';
 
-
-function ListPage() {
-
-    const [dummyData] = useState([
-        {
-            id: 1,
-            userName: 'yenny',
-            title: '떡볶이 먹을사람 괌',
-            ptcpation: '5',
-            price: '10,000',
-            time: '2024-11-29T11:30:00',
-            tags: ['스트레스', '맵고수', '분식', '배달'],
-            status: '진행중',
-            image: '/image/list/dummy.png',
-        },
-        {
-            id: 2,
-            userName: 'Henry',
-            title: '해장이 필요',
-            ptcpation: '3',
-            price: '30,000',
-            time: '2024-12-28T18:30:00',
-            tags: ['국물', '해장', '국밥', '배달'],
-            status: '진행중',
-            image: '/image/list/dummy2.png',
-        },
-        {
-            id: 3,
-            userName: 'kai',
-            title: '피자 먹을 사람',
-            ptcpation: '3',
-            price: '20,000',
-            time: '2024-08-26T11:30:00',
-            tags: ['국물', '해장', '국밥', '배달'],
-            status: '종료',
-            image: '/image/list/dummy2.png',
-        },
-        {
-            id: 4,
-            userName: '백인',
-            title: '국밥 먹을 사람',
-            ptcpation: '2',
-            price: '20,000',
-            time: '2024-08-26T11:30:00',
-            tags: ['국물', '해장', '국밥', '배달'],
-            status: '종료',
-            image: '/image/list/dummy2.png',
-        },
-        {
-            id: 5,
-            userName: '흑인',
-            title: '피자 먹을 사람',
-            ptcpation: '5',
-            price: '30,000',
-            time: '2024-08-26T11:30:00',
-            tags: ['국물', '해장', '국밥', '배달'],
-            status: '종료',
-            image: '/image/list/dummy2.png',
-        },
-    ]);
+export default function ListPage(props) {
+    console.log(props.data);
+    
+    const dummyData = useState(props.data);
 
     const [searchTerm, setSearchTerm] = useState('');
     const [selectedFilter, setSelectedFilter] = useState('전체');
     const [sortBy, setSortBy] = useState('최신순');
 
     const filteredData = dummyData
-        .filter(item =>
-            item.title.includes(searchTerm) ||
-            item.tags.some(tag => tag.includes(searchTerm))
-        )
-        .filter(item => selectedFilter === '전체' || item.status === selectedFilter)
-        .sort((a, b) => {
-            if (sortBy === '최신순') {
-                return new Date(b.time) - new Date(a.time);
-            } else if (sortBy === '마감임박순') {
-                return new Date(a.time) - new Date(b.time);
-            }
-        });
+        // .filter(item =>
+        //     item.title.includes(searchTerm) ||
+        //     item.tags.split(",").some(tag => tag.includes(searchTerm))
+        // )
+        // .filter(item => selectedFilter === '전체' || item.status === selectedFilter)
+        // .sort((a, b) => {
+        //     if (sortBy === '최신순') {
+        //         return new Date(b.time) - new Date(a.time);
+        //     } else if (sortBy === '마감임박순') {
+        //         return new Date(a.time) - new Date(b.time);
+        //     }
+        // });
 
     const isExpired = (time) => {
         const currentTime = new Date();
@@ -162,9 +106,9 @@ function ListPage() {
                                         </p>
                                     </div>
                                 </div>
-                                {item.tags.map(tag =>
+                                {/* {item.tags.map(tag =>
                                     <span key={tag} className="mem-item__tags text-black">{tag.replace('', '#')}</span>
-                                )}
+                                )} */}
                             </div>
                         </li>
                     ))}
@@ -178,6 +122,3 @@ function ListPage() {
         </div >
     );
 }
-
-
-export default ListPage;

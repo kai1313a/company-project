@@ -49,8 +49,8 @@ export default function Make() {
                                         <input
                                             name="category"
                                             type="radio"
-                                            value="아침"
-                                            checked={selectedOption === '아침'}
+                                            value="0"
+                                            checked={selectedOption === '0'}
                                             onChange={(e) => setselectedOption(e.target.value)}
                                         />
                                         <span className="peer">아침</span>
@@ -61,8 +61,8 @@ export default function Make() {
                                         <input
                                             name="category"
                                             type="radio"
-                                            value="점심"
-                                            checked={selectedOption === '점심'}
+                                            value="1"
+                                            checked={selectedOption === '1'}
                                             onChange={(e) => setselectedOption(e.target.value)}
                                         />
                                         <span className="peer">점심</span>
@@ -73,8 +73,8 @@ export default function Make() {
                                         <input
                                             name="category"
                                             type="radio"
-                                            value="저녁·회식"
-                                            checked={selectedOption === '저녁·회식'}
+                                            value="2"
+                                            checked={selectedOption === '2'}
                                             onChange={(e) => setselectedOption(e.target.value)}
                                         />
                                         <span className="peer">저녁·회식</span>
@@ -85,8 +85,8 @@ export default function Make() {
                                         <input
                                             name="category"
                                             type="radio"
-                                            value="음료·디저트"
-                                            checked={selectedOption === '음료·디저트'}
+                                            value="3"
+                                            checked={selectedOption === '3'}
                                             onChange={(e) => setselectedOption(e.target.value)}
                                         />
                                         <span className="peer">음료·디저트</span>
@@ -110,13 +110,13 @@ export default function Make() {
                             <ul className="info_list">
                                 <li className="list_item">
                                     <label className="item_tit" htmlFor="name">1. </label>
-                                    <input type="text" placeholder="메뉴이름" id="name" required />
+                                    <input type="text" name="menu" placeholder="메뉴이름" id="name" required />
                                 </li>
                                 <li className="list_item">
-                                    <input type="text" placeholder="예상금액" id="price" required />
+                                    <input type="text" name="price" placeholder="예상금액" id="price" required />
                                 </li>
                                 <li className="list_item">
-                                    <input type="text" placeholder="URL" id="adressurl" required />
+                                    <input type="text" name="url" placeholder="URL" id="adressurl" required />
                                 </li>
 
                                 <div className='list_pic' onChange={handleImageChange}>

@@ -1,8 +1,26 @@
+'use client'
+
 import Link from 'next/link';
 import parse from 'html-react-parser';
+import { useEffect, useState } from 'react';
+
 
 export default function Join() {
-    const userName = 'Yenny';
+
+    const [userName, setUserName] = useState(false);
+
+    useEffect(() => {
+        if (localStorage.getItem('users')) {
+            setUserName(false);
+        } else {
+            setUserName(!userName);
+            localStorage.getItem('loginName')
+        }
+      });
+    
+    
+    console.log(userName);
+    
 
     const mealCategories = [
         { title: '커피, 음료,<br>디저트', image: '/image/join/meal-item01-greencoffee.png', alt: '커피' },
@@ -29,7 +47,7 @@ export default function Join() {
                                 after:opacity-20 after:rounded-[10px] 
                                 ${index === 2 ? 'meal-item--color' : ''}`}
                         >
-                            <Link href="/" className="meal-item__link relative block z-10">
+                            <Link href={"/list/" + index} className="meal-item__link relative block z-10">
                                 <h3 className="meal-item__title text-black">{parse(title)}</h3>
                                 <div className="img-box absolute w-20 bottom-[-17px] right-0">
                                     <img src={image} alt={alt} />

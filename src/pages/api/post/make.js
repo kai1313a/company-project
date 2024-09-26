@@ -8,7 +8,7 @@ export default async function handler(요청, 응답) {
         const client = await connectDB;
         const db = client.db("teamproject")
         let result = await db.collection('list').insertOne(요청.body) //insertOne DB에 전송
-        return 응답.status(200).redirect('/list')
+        return 응답.status(200).redirect('/join')
         
         
     }
