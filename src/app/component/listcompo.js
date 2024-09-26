@@ -86,7 +86,7 @@ export default function ListPage(props) {
                 <ul className="mem-list flex flex-col gap-2">
                     {filteredData.map((item) => (
                         <li key={item.id} className={`mem-item relative flex items-center ${isExpired(item.time) ? 'disabled' : ''}`}>
-                            <Link href={"/detail/" + item._id}>
+                            <Link href={"/detail/" + item._id} style={{width : "100%"}}>
                                 <div className="mem-item__profile flex flex-col items-center">
                                     <div className="img-box">
                                         <img src={item.image} alt="프로필 이미지" className="profile-image" />

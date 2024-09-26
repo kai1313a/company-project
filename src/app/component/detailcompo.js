@@ -140,14 +140,14 @@ export default function Detail(props) {
                     <h3 className="title">메뉴 목록</h3>
                     <ul className="menu_list">
                         {
-                            menuListData.form.map((item, index) => (
+                            menuListData.menu.map((item, index) => (
                                 <li key={index} className="item">
                                     <span className="num">{item.id}</span>
 
                                     <div className="info">
                                         <div className="top">
                                             <div className="inner">
-                                                <strong className="name">{item.title}</strong>
+                                                <strong className="name">{item}</strong>
 
                                                 <div className="vote_box">
                                                     {/* <button key={item.id} className={!isLike ? 'btn_vote' : 'btn_vote active'} onClick={onLikeButtonClick}>
