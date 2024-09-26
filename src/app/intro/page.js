@@ -13,6 +13,32 @@ export default function Intro() {
         router.push('/join')
     }
 
+
+    //login시 localstorage에 저장
+    const { register, getValues } = useForm();
+
+    const onLoginBtnClick = () => {
+        const user = getValues();
+        if (localStorage.getItem('users')) { //이미 user 정보가 있을 때ß
+            // const users = JSON.parse(localStorage.getItem('users') || '[]');
+            // const allUsers = [...users, user]
+            // localStorage.setItem('users', JSON.stringify(allUsers));
+            
+            // router.push('/join')
+        } else { //user 정보가 없을 때
+            localStorage.setItem('users', JSON.stringify(user));
+            router.push('/join')
+            
+            setTimeout(()=> {
+                localStorage.clear('users')
+            }, 3000000)
+            // 1시간 뒤에 스토리지 삭제
+        }
+
+
+        console.log('user info', user);
+
+    }
    
     const defaultImageUrl = '/image/intro/profile-common.png'; //기본 이미지 경로
 
@@ -51,26 +77,7 @@ export default function Intro() {
     }, []);
 
 
-    //login시 localstorage에 저장
-    const { register, getValues } = useForm();
-
-    const onLoginBtnClick = () => {
-        const user = getValues();
-        if (localStorage.getItem('users')) { //이미 user 정보가 있을 때ß
-            // const users = JSON.parse(localStorage.getItem('users') || '[]');
-            // const allUsers = [...users, user]
-            // localStorage.setItem('users', JSON.stringify(allUsers));
-            
-            // router.push('/join')
-        } else { //user 정보가 없을 때
-            localStorage.setItem('users', JSON.stringify(user));
-             router.push('/join')
-        }
-
-
-        console.log('user info', user);
-
-    }
+    
 
     return (
         <div className='intro wrap'>

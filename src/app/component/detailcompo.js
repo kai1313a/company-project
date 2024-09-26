@@ -1,46 +1,33 @@
 'use client';
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import Link from 'next/link';
 import Image from 'next/image'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
-import Modal02 from '../component/Modal02';
+import Modal02 from '../component/Modal02.js';
 
-export default function Detail() {
+export default function Detail(props) {
+    useEffect(() => {
+        if (!localStorage.getItem('users')) {
+            Router.push('/intro')
+        }
+    });
+
+    const [like, setLike] = useState(0);
+    // const [isLike, setIsLike] = useState(false);
+
+    // const onLikeButtonClick = () => {
+    //     setLike(like + (isLike ? -1 : 1));
+    //     setIsLike(!isLike);
+    // }
 
     const [isActive, setIsActive] = useState(true);
     const toggleIsActive = (i, prev) => {
         setIsActive(i);
+        setLike(0);
+        // setIsLike(!isLike);
     };
-
-    let [check, setcheck] = useState(0);
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(null);
-    const fetchCheckes = async () => {
-        try {
-            setError();
-            setLoading(true);
-            const count = (check) => {
-                check = menuListData.menu.map((item, index) => item.check)
-                setcheck(check);
-            }
-
-            count(check);
-
-        } catch (e) {
-            setError(e);
-        }
-        setLoading(false);
-    };
-
-    useEffect(() => {
-        fetchCheckes();
-    }, []);
-
-    // if (loading) return <div>로딩중..</div>;
-    // if (error) return <div>에러가 발생했습니다.</div>;
-    // if (!check) return null;
 
     const tagSlideData = [
         {
@@ -66,50 +53,51 @@ export default function Detail() {
     ];
 
     const [dummyData] = useState(
-        {
-            menu: [
-                {
-                    id: 1,
-                    title: '엽기떡볶이',
-                    ptcpation: '1',
-                    price: '10,000',
-                    images: ['../../image/detail/btn_photo.png', '../../image/detail/btn_photo.png'],
-                    alts: ['1', '2'],
-                    url: 'https://www.naver.com/',
-                    check : 10
-                },
-                {
-                    id: 2,
-                    title: '죠스떡볶이',
-                    ptcpation: '1',
-                    price: '30,000',
-                    images: ['../../image/detail/btn_photo.png'],
-                    alts: ['1'],
-                    url: 'https://www.google.com/',
-                    check : 20
-                },
-                {
-                    id: 3,
-                    title: '죠스떡볶이',
-                    ptcpation: '1',
-                    price: '15,000',
-                    images: [],
-                    alts: [],
-                    url: 'https://www.google.com/',
-                    check : 30
-                },
-                {
-                    id: 4,
-                    title: '죠스떡볶이22222',
-                    ptcpation: '1',
-                    price: '25,000',
-                    images: [],
-                    alts: [],
-                    url: 'https://www.google.com/',
-                    check : 40
-                },
-            ]
-        }
+        props.data
+        // {
+        //     menu: [
+        //         {
+        //             id: 1,
+        //             title: '엽기떡볶이',
+        //             ptcpation: '1',
+        //             price: '10,000',
+        //             votes: false,
+        //             images: ['../../image/detail/btn_photo.png', '../../image/detail/btn_photo.png'],
+        //             alts: ['1', '2'],
+        //             url: 'https://www.naver.com/'
+        //         },
+        //         {
+        //             id: 2,
+        //             title: '죠스떡볶이',
+        //             ptcpation: '1',
+        //             price: '30,000',
+        //             votes: false,
+        //             images: ['../../image/detail/btn_photo.png'],
+        //             alts: ['1'],
+        //             url: 'https://www.google.com/'
+        //         },
+        //         {
+        //             id: 3,
+        //             title: '죠스떡볶이',
+        //             ptcpation: '1',
+        //             price: '15,000',
+        //             votes: false,
+        //             images: [],
+        //             alts: [],
+        //             url: 'https://www.google.com/'
+        //         },
+        //         {
+        //             id: 4,
+        //             title: '죠스떡볶이22222',
+        //             ptcpation: '1',
+        //             price: '25,000',
+        //             votes: false,
+        //             images: [],
+        //             alts: [],
+        //             url: 'https://www.google.com/'
+        //         },
+        //     ]
+        // }
     );
 
     const menuListData = dummyData;
@@ -152,7 +140,7 @@ export default function Detail() {
                     <h3 className="title">메뉴 목록</h3>
                     <ul className="menu_list">
                         {
-                            menuListData.menu.map((item, index) => (
+                            menuListData.form.map((item, index) => (
                                 <li key={index} className="item">
                                     <span className="num">{item.id}</span>
 
@@ -162,8 +150,8 @@ export default function Detail() {
                                                 <strong className="name">{item.title}</strong>
 
                                                 <div className="vote_box">
-                                                    {/* <button key={item.id} className={!ischeck ? 'btn_vote' : 'btn_vote active'} onClick={oncheckButtonClick}>
-                                                    {!ischeck ? '투표하기' : '투표완료'}
+                                                    {/* <button key={item.id} className={!isLike ? 'btn_vote' : 'btn_vote active'} onClick={onLikeButtonClick}>
+                                                    {!isLike ? '투표하기' : '투표완료'}
                                                 </button> */}
 
                                                     <button
@@ -180,14 +168,14 @@ export default function Detail() {
                                                     <Modal02 className="icon_person">
                                                         <div>Hello World222</div>
                                                     </Modal02>
-                                                    <span className="person_num">{isActive === index ? (check[index] + 1) : (check[index]) }</span>
+                                                    <span className="person_num">{isActive === index ? like + 1 : like}</span>
                                                 </div>
                                             </div>
 
                                             {item.price && <p className="txt">예상금액 : {item.ptcpation}인당 <span className="price">{item.price}</span>원</p>}
                                         </div>
 
-                                        <div className="btm">
+                                        {/* <div className="btm">
                                             <ul className="photo_list">
                                                 {
                                                     item.images.length !== 0 ? (
@@ -217,12 +205,47 @@ export default function Detail() {
                                                 )
                                             }
 
-                                        </div>
+                                        </div> */}
                                     </div>
                                 </li>
                             ))
                         }
                     </ul>
+                    {/* <ul className="menu_list">
+                        <li className="item">
+                            <span className="num">1</span>
+
+                            <div className="info">
+                                <div className="top">
+                                    <div className="inner">
+                                        <strong className="name">메뉴 이름</strong>
+
+                                        <div className="vote_box">
+                                            <button className={!isLike ? 'btn_vote' : 'btn_vote active'} onClick={onLikeButtonClick}>
+                                                {!isLike ? '투표하기' : '투표완료'}
+                                            </button>
+                                            <button className="icon_person"></button>
+                                            <span className="person_num">{like}</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <p className="txt">예상금액 : 1인당 <span className="price">10,000</span>원</p>
+                                </div>
+                                
+                                <div className="btm">
+                                    <div className="photo_list">
+                                        <button className="btn_photo">사진 업로드</button>
+                                        <button className="btn_photo">사진 업로드</button>
+                                        <button className="btn_photo">사진 업로드</button>
+                                    </div>
+
+                                    <a href="" className="btn_link">
+                                        <span className="blind">공유하기</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul> */}
                 </div>
             </div>
         </div>

@@ -3,23 +3,24 @@
 import Link from 'next/link';
 import parse from 'html-react-parser';
 import { useEffect, useState } from 'react';
+import { useRouter  } from 'next/navigation';
 
 
-export default function Join() {
+export default function JoinServer() {
+    const Router = useRouter();
 
-    const [userName, setUserName] = useState(false);
+    // 로컬스토리지에있는 프로필명 불러오기
+    const [userName, setUserName] = useState('');
 
     useEffect(() => {
         if (localStorage.getItem('users')) {
-            setUserName(false);
+            const name = JSON.parse(localStorage.getItem('users'))
+            setUserName(name.loginName)
+        
         } else {
-            setUserName(!userName);
-            localStorage.getItem('loginName')
+            Router.push('/intro')
         }
-      });
-    
-    
-    console.log(userName);
+    });
     
 
     const mealCategories = [

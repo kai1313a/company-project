@@ -2,7 +2,7 @@
 
 import { Input } from "postcss";
 import Image from "next/image";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 // import Controller from '../controller/Controller.js';
 
 export default function Make() {
@@ -35,6 +35,20 @@ export default function Make() {
         setImage(defaultImageUrl);
         setFile(null);
     };
+
+    const [userName, setUserName] = useState('');
+
+    useEffect(() => {
+        if (localStorage.getItem('users')) {
+            const name = JSON.parse(localStorage.getItem('users'))
+            setUserName(name.loginName)
+        
+        } else {
+            Router.push('/intro')
+        }
+    });
+    
+    
 
     return (
         <div className="sec_make">
@@ -101,7 +115,7 @@ export default function Make() {
                                     <input type="text" name="title" placeholder="방제목" id="title" required />
                                 </li>
                                 <li className="list_item">
-                                    <input type="text" name="hash" placeholder="#태그 (5개까지 입력)" id="tag" required />
+                                    <input type="text" name="hash" placeholder="#맛집,#폭주,#집안가 (5개까지 입력)" id="tag" required />
                                 </li>
                             </ul>
                         </div>
@@ -113,7 +127,7 @@ export default function Make() {
                                     <input type="text" name="menu" placeholder="메뉴이름" id="name" required />
                                 </li>
                                 <li className="list_item">
-                                    <input type="text" name="price" placeholder="예상금액" id="price" required />
+                                    <input type="text" name="price" placeholder="예상금액 (1인당 / 금액만 입력)" id="price" required />
                                 </li>
                                 <li className="list_item">
                                     <input type="text" name="url" placeholder="URL" id="adressurl" required />
@@ -130,6 +144,36 @@ export default function Make() {
 
                                 </div>
                             </ul>
+
+                            <ul className="info_list">
+                                <li className="list_item">
+                                    <label className="item_tit" htmlFor="name">1. </label>
+                                    <input type="text" name="menu" placeholder="메뉴이름" id="name" required />
+                                </li>
+                                <li className="list_item">
+                                    <input type="text" name="price" placeholder="예상금액 (1인당 / 금액만 입력)" id="price" required />
+                                </li>
+                                <li className="list_item">
+                                    <input type="text" name="url" placeholder="URL" id="adressurl" required />
+                                </li>
+
+                                <div className='list_pic' onChange={handleImageChange}>
+                                    <div className='img_wrap'>
+                                        <img className='list_img' src={image} alt="리스트 업로드 이미지" />
+                                        <label htmlFor="loginImgInput" className='img_label'>
+                                        </label>
+                                        <button className={`img_delete ${!file ? '' : 'show'}`} type="button" onClick={handleCancel} title="기본 이미지로 변경"></button>
+                                    </div>
+                                    <input id='loginImgInput' className='img_input' type="file" accept="image/*" multiple />
+
+                                </div>
+                            </ul>
+                        </div>
+                        <div className="info_area" style={{display: "none"}}>
+                            <input type="text" name="check" value={0} required />
+                        </div>
+                        <div className="info_area" style={{display: "none"}}>
+                            <input type="text" name="username" value={userName} required />
                         </div>
                         <div className="info_area">
                             <p className="info_title">마감시간</p>
