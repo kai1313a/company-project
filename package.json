@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && next export",
+    "build": "node node_modules/next/dist/bin/next build && touch out/.nojekyll",
     "start": "next start",
     "lint": "next lint",
     "deploy": "next build && touch out/.nojekyll && git add -f out/ && git commit -m \"Deploy\" && git subtree push --prefix out origin gh-pages"
@@ -13,7 +13,7 @@
     "animate.css": "^4.1.1",
     "html-react-parser": "^5.1.13",
     "mongodb": "^6.9.0",
-    "next": "^14.2.12",
+    "next": "^14.2.13",
     "react": "^18",
     "react-dom": "^18",
     "react-hook-form": "^7.53.0",
