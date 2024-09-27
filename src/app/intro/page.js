@@ -9,9 +9,11 @@ export default function Intro() {
 
     const router = useRouter();
 
-    if (localStorage.getItem('users')) { //이미 user 정보가 있을 때ß
-        router.push('/join')
-    }
+    useEffect(() => {
+        if (localStorage.getItem('users')) {
+            router.push('/join')
+        }
+    });
 
 
     //login시 localstorage에 저장

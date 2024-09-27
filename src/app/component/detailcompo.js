@@ -6,8 +6,11 @@ import Image from 'next/image'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import Modal02 from '../component/Modal02.js';
+import { useRouter } from "next/navigation.js";
 
 export default function Detail(props) {
+    const Router = useRouter();
+
     useEffect(() => {
         if (!localStorage.getItem('users')) {
             Router.push('/intro')

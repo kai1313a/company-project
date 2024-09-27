@@ -1,11 +1,19 @@
 'use client';
 
 import Link from "next/link.js";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Modal from '../component/Modal';
+import { useRouter } from "next/navigation";
 
 export default function ListPage(props) {
-    
+    const Router = useRouter();
+
+    useEffect(() => {
+        if (!localStorage.getItem('users')) {
+            Router.push('/intro')
+        }
+    });
+
     const dummyData = useState(props.data);
     
     const [searchTerm, setSearchTerm] = useState('');
