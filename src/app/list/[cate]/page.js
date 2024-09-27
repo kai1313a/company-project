@@ -1,18 +1,20 @@
 import { connectDB } from "../../util/database.js";
-import ListCompo from "../../component/listcompo.js"
+import ListCompo from "../../component/listcompo.js";
 
 export default async function ListPageServer(props) {
-    
     const client = await connectDB;
-    const db = client.db("teamproject")
+    const db = client.db("teamproject");
 
-    let result = await db.collection('list').find({category: props.params.cate}).toArray();
+    let result = await db.collection('list').find({ category: props.params.cate }).toArray();
 
-    
-    return(
+    const resultWithStringDates = result.map(item => ({
+        ...item,
+        date: item.date instanceof Date ? item.date.toISOString() : item.date
+    }));
+
+    return (
         <div>
-            <ListCompo data={result}/>
+            <ListCompo data={resultWithStringDates} />
         </div>
-    )
+    );
 }
-
