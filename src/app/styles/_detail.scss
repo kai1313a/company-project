@@ -2,12 +2,12 @@
     width: 100%; min-width: 320px;
 
     .header {
-        display: flex; justify-content: space-between; align-items: center; background-color: var(--main01); margin-bottom: 15px; padding: 20px;
+        position: relative; display: flex; justify-content: center; align-items: center; background-color: var(--main01); margin-bottom: 15px; padding: 20px;
 
-        .title {color: #fff; font-size: 20px; line-height: 22px; text-align: left;}
+        .title {width: 300px; color: #fff; font-size: 20px; line-height: 22px; text-align: center; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; word-break: break-all;}
         input {color: #fff; font-size: 20px; line-height: 22px; background-color: var(--main01); text-align: center;}
-        .btn_share {width: 19px; height: 22px; background: url('../../../public/image/header/icon_share.png') no-repeat;}
-        .btn_write {width: 20px; height: 20px; background: url('../../../public/image/header/icon_writer.png') no-repeat;}
+        .btn_share {position: absolute; top: 20px; left: 20px; width: 19px; height: 22px; background: url('../../../public/image/header/icon_share.png') no-repeat;}
+        .btn_write {position: absolute; top: 20px; right: 20px; width: 20px; height: 20px; background: url('../../../public/image/header/icon_writer.png') no-repeat;}
     }
 
     .tag {
@@ -16,8 +16,9 @@
         &::before {display: inline-block; content: ''; width: 16px; height: 16px; margin-right: 15px; background: url('../../../public/image/detail/icon_tag_mo.png') no-repeat; background-size: 16px 16px; vertical-align: middle;}
 
         .tag_list {
-            display: flex; justify-content: center; align-items: center; width: calc(100% - 35px); gap: 10px;
+            display: flex; justify-content: flex-start; align-items: center; max-width: calc(100% - 35px); width: auto; gap: 10px;
 
+            .swiper {width: 100%;}
             .item {
                 display: inline-flex; justify-content: center; align-items: center; min-width: 55px; width: auto; height: 25px; margin-left: 10px; padding: 0 10px; background-color: var(--main04, #E3FEF6); border-radius: 5px; color: var(--main01); font-size: 14px; font-weight: 700; text-align: center;
 
@@ -72,8 +73,7 @@
                         .photo_list {
                             display: flex; justify-content: space-between; align-items: center; gap: 15px; margin-left: 0;
 
-                            .btn_photo {width: 60px; height: 60px; @include vw-mo(font-size, 0); text-indent: -9999em;}
-
+                            .btn_photo {display: block; width: 60px; height: 60px; @include vw-mo(font-size, 0); text-indent: -9999em;}
                             .photo_none {
                                 display: flex; justify-content: space-between; align-items: center;
                                 span {margin-left: 5px; color: var(--MiddleGrey01); font-size: 11px;}

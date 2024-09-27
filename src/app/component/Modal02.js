@@ -23,7 +23,7 @@ const Modal02 = ({ children }) => {
 
   return (
     <>
-      <button className='icon_person ' onClick={handleOpen}><span className='blind'>모달 열기</span></button>
+      <button className='icon_person ' onClick={handleOpen}>모달 열기</button>
 
       <div className={`modal ${isOpen ? 'isOpen' : '' ? 'dimm' : ''}`}> 
         {isOpen && (
