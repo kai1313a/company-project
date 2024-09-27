@@ -1,11 +1,8 @@
 /** @type {import('next').NextConfig} */
-// const nextConfig = {
-//     output: 'export',
-//     basePath: '/company-project',
-//     assetPrefix: '/company-project/',
-//     images: {
-//         unoptimized: true
-//     },
-// }
+const nextConfig = {
+    output: 'export',
+    reactStrictMode: true,
+    basePath: "/company-project",
+}
 
-// export default nextConfig
+export default nextConfig

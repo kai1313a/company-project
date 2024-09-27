@@ -190,7 +190,7 @@ export default function Make() {
                                 </div> */}
                             </ul>
 
-                            <button type="button" className="add_btn"><img src="../../../image/make/list_add_ico.png" /></button>
+                            <button type="button" className="add_btn"><img src="../../../image/make/list_add_ico.png" alt="플러스 아이콘" width={26} height={26}/></button>
                         </div>
                         <div className="info_area" style={{display: "none"}}>
                             <input type="text" name="check" value={0} required />
@@ -248,7 +248,7 @@ export default function Make() {
 
                         <button type="submit" className="btn_submit">등록완료</button>
                     </form>
-                    <button type="button" className="close_btn"><img src="../../../image/make/modal_close.png" /></button>
+                    <button type="button" className="close_btn"><img src="../../../image/make/modal_close.png" alt="닫기 버튼" width={41} height={40}/></button>
                 </div>
             </div>
         </div>
