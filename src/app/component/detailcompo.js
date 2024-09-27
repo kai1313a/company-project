@@ -101,6 +101,7 @@ export default function Detail(props) {
                                                     >
                                                         {isActive === index ? '투표완료' : '투표하기'}
                                                     </button>
+                                                    <span className="icon_person"></span>
                                                     <span className="person_num">{isActive === index ? like + 1 : like}</span>
                                                 </div>
                                             </div>
@@ -110,22 +111,7 @@ export default function Detail(props) {
 
                                         <div className="btm">
                                             <ul className="photo_list">
-                                                {
-                                                    prdImgArr.length !== 0 ? (
-                                                        prdImgArr.map((image, index) =>
-                                                            <li key={index} className="btn_photo">
-                                                                <img key={index} src={image} alt="alt" />
-                                                            </li>
-                                                        )
-                                                    ) : (
-                                                        <li className="photo_none">
-                                                            <img src="../../image/detail/icon_camera.png" alt="카메라" />
-                                                            <span>등록된사진없음</span>
-                                                        </li>
-                                                    )
-                                                }
-
-                                                {/* <Testcomp data={prdImgArr} /> */}
+                                                <Modal02 data={prdImgArr} />
                                             </ul>
 
                                             {
