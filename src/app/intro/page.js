@@ -106,7 +106,7 @@ export default function Intro() {
                 <h2 className='login_title'>프로필 사진과<br />닉네임을 등록해주세요.</h2>
                 <div className='login_profile' onChange={handleImageChange}>
                     <div className='login_img_wrap' >
-                        <img className='login_img' src={image} alt="프로필 이미지" fill="true"/>
+                        <img className='login_img' src={image} alt="프로필 이미지" width={148} height={148}/>
                     </div>
                     <input
                         id='loginImgInput'
