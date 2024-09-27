@@ -2,40 +2,67 @@
 
 import { Input } from "postcss";
 import Image from "next/image";
+import axios from "axios";
 import { useEffect, useState } from 'react';
-// import Controller from '../controller/Controller.js';
+import ProductImage from './productImage/productImage.js';
+
 
 export default function Make() {
 
-    const [selectedOption, setselectedOption] = useState('');
+    const [productImg, setproductImg] = useState("../../../image/make/upload_basic.png");
 
-    // const controllerValue = Controller('intro');
+    const convertDataURLToFile = async (dataURL, fileName) => {
+        const response = await axios.get(dataURL, {
+            responseType: "blob",
+        })
 
-    const defaultImageUrl = '/image/make/upload_basic.png'; //기본 이미지 경로
+        const blob = response.data;
 
-    // 프로필 이미지 업로드
-    const [image, setImage] = useState(defaultImageUrl);
-    const [file, setFile] = useState(null);
+        const profileImgFile = new File([blob], fileName, { type: blob.type});
 
-    // 이미지 파일을 선택했을 때 호출되는 함수
-    const handleImageChange = (event) => {
-        const selectedFile = event.target.files[0];
-        if (selectedFile) {
-            const reader = new FileReader();
-            reader.onloadend = () => {
-                setImage(reader.result);
-                setFile(selectedFile);
-            };
-            reader.readAsDataURL(selectedFile);
+        return profileImgFile;
+
+    }
+
+    const onCLickSubmitBtn = async () => {
+        const formData = new FormData()
+
+        if(productImg) {
+            console.log("파일 객체로 변한 전 이미지", productImg);
+
+            const profileImgFile = await convertDataURLToFile(
+                productImg,
+                `productImg`
+            );
+
+            FormData.append("image", profileImgFile);
+            console.log("파일 객체로 변환 후 이미지", profileImgFile);
+            
         }
-    };
 
-    // 취소 버튼을 클릭했을 때 호출되는 함수
-    const handleCancel = () => {
-        setImage(defaultImageUrl);
-        setFile(null);
-    };
+        try {
+            const response = await axios.post(
+                `mongodb+srv://admin:dnstjq13@unseop.be9440o.mongodb.net/teamproject`,
+                formData,
+                {
+                    headers: {
+                        "Content-Type" : "multipart/form-data",
+                        "ngrok-skip-browser-warning": "69420",
+                    }
+                }
+            )
+            console.log(response);
+            
+        } catch (error) {
+            console.log(error);
+            
+        }
 
+    }
+
+
+
+    const [selectedOption, setselectedOption] = useState('');
     const [userName, setUserName] = useState('');
 
     useEffect(() => {
@@ -121,7 +148,7 @@ export default function Make() {
                         </div>
                         <div className="info_area">
                             <p className="info_title">메뉴등록</p>
-                            <ul className="info_list">
+                            <ul className="info_list info_list_add">
                                 <li className="list_item">
                                     <label className="item_tit" htmlFor="name">1. </label>
                                     <input type="text" name="menu" placeholder="메뉴이름" id="name" required />
@@ -133,19 +160,16 @@ export default function Make() {
                                     <input type="text" name="url" placeholder="URL" id="adressurl" required />
                                 </li>
 
-                                <div className='list_pic' onChange={handleImageChange}>
-                                    <div className='img_wrap'>
-                                        <img className='list_img' src={image} alt="리스트 업로드 이미지" />
-                                        <label htmlFor="loginImgInput" className='img_label'>
-                                        </label>
-                                        <button className={`img_delete ${!file ? '' : 'show'}`} type="button" onClick={handleCancel} title="기본 이미지로 변경"></button>
-                                    </div>
-                                    <input id='loginImgInput' className='img_input' type="file" accept="image/*" multiple />
+                                {/* <div className='list_pic'>
+                                    <ProductImage
+                                        productImg={productImg}
+                                        setproductImg={setproductImg}
+                                    />
 
-                                </div>
+                                </div> */}
                             </ul>
 
-                            <ul className="info_list">
+                            <ul className="info_list info_list_add">
                                 <li className="list_item">
                                     <label className="item_tit" htmlFor="name">1. </label>
                                     <input type="text" name="menu" placeholder="메뉴이름" id="name" required />
@@ -157,17 +181,16 @@ export default function Make() {
                                     <input type="text" name="url" placeholder="URL" id="adressurl" required />
                                 </li>
 
-                                <div className='list_pic' onChange={handleImageChange}>
-                                    <div className='img_wrap'>
-                                        <img className='list_img' src={image} alt="리스트 업로드 이미지" />
-                                        <label htmlFor="loginImgInput" className='img_label'>
-                                        </label>
-                                        <button className={`img_delete ${!file ? '' : 'show'}`} type="button" onClick={handleCancel} title="기본 이미지로 변경"></button>
-                                    </div>
-                                    <input id='loginImgInput' className='img_input' type="file" accept="image/*" multiple />
+                                {/* <div className='list_pic'>
+                                    <productImage
+                                        productImg={productImg}
+                                        setproductImg={setproductImg}
+                                    />
 
-                                </div>
+                                </div> */}
                             </ul>
+
+                            <button type="button" className="add_btn"><img src="../../../image/make/list_add_ico.png" /></button>
                         </div>
                         <div className="info_area" style={{display: "none"}}>
                             <input type="text" name="check" value={0} required />
@@ -225,7 +248,7 @@ export default function Make() {
 
                         <button type="submit" className="btn_submit">등록완료</button>
                     </form>
-                    <button type="button" className="close_btn"><img src="/image/make/modal_close.png" /></button>
+                    <button type="button" className="close_btn"><img src="../../../image/make/modal_close.png" /></button>
                 </div>
             </div>
         </div>
