@@ -100,7 +100,7 @@ export default function ListPage(props) {
                                             <p className='mem-item__prcpation text-black'>참여 <span>{item.check}</span>명</p>
                                         </div>
                                         <div className="mem-item__box flex justify-between">
-                                            {item.price && <p className="mem-item__price text-black">예상금액 : 1인당 {item.price}원</p>}
+                                            {item.price && <p className="mem-item__price text-black">예상금액 : 1인당 {item.price[0]}원</p>}
                                             <p className="mem-item__time text-black">
                                                 {isExpired(item.time) ? (
                                                     <span className="expired-label text-black">종료</span>

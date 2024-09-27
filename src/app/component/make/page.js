@@ -175,6 +175,9 @@ export default function Make() {
                         <div className="info_area" style={{display: "none"}}>
                             <input type="text" name="username" value={userName} required />
                         </div>
+                        <div className="info_area" style={{display: "none"}}>
+                            <input type="text" name="date" value={true} required />
+                        </div>
                         <div className="info_area">
                             <p className="info_title">마감시간</p>
                             <ul className="info_list">

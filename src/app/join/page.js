@@ -24,10 +24,10 @@ export default function JoinServer() {
     
 
     const mealCategories = [
-        { title: '커피, 음료,<br>디저트', image: '/image/join/meal-item01-greencoffee.png', alt: '커피' },
         { title: '아침', image: '/image/join/meal-item02-toster.png', alt: '토스트' },
         { title: '점심', image: '/image/join/meal-item03-rice.png', alt: '밥' },
         { title: '저녁, 회식', image: '/image/join/meal-item04-beer.png', alt: '맥주' },
+        { title: '커피, 음료,<br>디저트', image: '/image/join/meal-item01-greencoffee.png', alt: '커피' },
     ];
 
     return (
