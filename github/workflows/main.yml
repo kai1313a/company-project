@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          fetch-depth: 0  # 모든 히스토리를 가져옵니다
+          fetch-depth: 0
       
       - name: Push to han7182002/company
         env:
