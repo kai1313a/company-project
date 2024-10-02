@@ -1,30 +1,22 @@
-name: git push into another repo to deploy to vercel
+name: Push to Personal Repo
 
 on:
   push:
-    branches: [main]
+    branches: [main]  # 또는 your-main-branch-name
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    container: pandoc/latex
     steps:
       - uses: actions/checkout@v2
-      - name: Install mustache (to update the date)
-        run: apk add ruby && gem install mustache
-      - name: creates output
-        run: sh ./build.sh
-      - name: Pushes to another repository
-        id: push_directory
-        uses: cpina/github-action-push-to-another-repository@main
+        with:
+          fetch-depth: 0  # 모든 히스토리를 가져옵니다
+      
+      - name: Push to han7182002/company
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
-        with:
-          source-directory: 'output'
-          destination-github-username: [your-team-official-github-name]
-          destination-repository-name: [your-team-official-github-repository-name]
-          user-email: ${{ secrets.OFFICIAL_ACCOUNT_EMAIL }}
-          commit-message: ${{ github.event.commits[0].message }}
-          target-branch: main
-      - name: Test get variable exported by push-to-another-repository
-        run: echo $DESTINATION_CLONED_DIRECTORY
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git remote add personal https://${{ secrets.API_TOKEN_GITHUB }}@github.com/han7182002/company.git
+          git push personal main:main --force
