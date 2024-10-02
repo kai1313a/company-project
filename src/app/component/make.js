@@ -217,10 +217,7 @@ export default function Make() {
                             <input type="text" name="username" value={userName} required />
                         </div>
                         <div className="info_area" style={{display: "none"}}>
-                            <input type="text" name="date" value={true} required />
-                        </div>
-                        <div className="info_area" style={{display: "none"}}>
-                            <input type="text" name="prdImages" value={null} required />
+                            <input type="text" name="prdImages" value={['']} required />
                         </div>
                         <div className="info_area">
                             <p className="info_title">마감시간</p>
