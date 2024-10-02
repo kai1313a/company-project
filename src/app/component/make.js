@@ -60,7 +60,60 @@ export default function Make() {
 
     }
 
+    const [nodeCount, setNodeCount] = useState(1);
 
+    const nodeAdd = () => {
+        let num = nodeCount + 1
+        setNodeCount(num)
+
+          
+        console.log(nodeCount);
+        
+    }
+
+    const rendering = () => {
+        const result = [];
+        for (let i = 0; i < nodeCount; i++) {
+            result.push(<ul className="info_list info_list_add">
+                <li className="list_item">
+                    <label className="item_tit" htmlFor="name">{nodeCount}. </label>
+                    <input type="text" name="menu" placeholder="메뉴이름" id="name" required />
+                </li>
+                <li className="list_item">
+                    <input type="text" name="price" placeholder="예상금액 (1인당 / 금액만 입력)" id="price" required />
+                </li>
+                <li className="list_item">
+                    <input type="text" name="url" placeholder="URL" id="adressurl" required />
+                </li>
+
+                <div className='list_pic'>
+                    <ProductImage
+                        productImg={productImg}
+                        setproductImg={setproductImg}
+                    />
+
+                </div>
+            </ul>)
+        }
+        return result;
+    }
+
+    // 마감시간 for 문
+    const timeSelect = () => {
+        const result = [];
+        for (let i = 0; i < 25; i++) {
+            result.push(<option value={i}>{i}</option>)
+        }
+        return result;
+    }
+
+    const minuteSelect = () => {
+        const result = [];
+        for (let i = 0; i < 7; i++) {
+            result.push(<option value={{i}+0}>{i}0</option>)
+        }
+        return result;
+    }
 
     const [selectedOption, setselectedOption] = useState('');
     const [userName, setUserName] = useState('');
@@ -73,7 +126,9 @@ export default function Make() {
         } else {
             Router.push('/intro')
         }
-    });
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
     
     
 
@@ -93,6 +148,7 @@ export default function Make() {
                                             value="0"
                                             checked={selectedOption === '0'}
                                             onChange={(e) => setselectedOption(e.target.value)}
+                                            required
                                         />
                                         <span className="peer">아침</span>
                                     </label>
@@ -105,6 +161,7 @@ export default function Make() {
                                             value="1"
                                             checked={selectedOption === '1'}
                                             onChange={(e) => setselectedOption(e.target.value)}
+                                            required
                                         />
                                         <span className="peer">점심</span>
                                     </label>
@@ -117,6 +174,7 @@ export default function Make() {
                                             value="2"
                                             checked={selectedOption === '2'}
                                             onChange={(e) => setselectedOption(e.target.value)}
+                                            required
                                         />
                                         <span className="peer">저녁·회식</span>
                                     </label>
@@ -129,6 +187,7 @@ export default function Make() {
                                             value="3"
                                             checked={selectedOption === '3'}
                                             onChange={(e) => setselectedOption(e.target.value)}
+                                            required
                                         />
                                         <span className="peer">음료·디저트</span>
                                     </label>
@@ -148,49 +207,8 @@ export default function Make() {
                         </div>
                         <div className="info_area">
                             <p className="info_title">메뉴등록</p>
-                            <ul className="info_list info_list_add">
-                                <li className="list_item">
-                                    <label className="item_tit" htmlFor="name">1. </label>
-                                    <input type="text" name="menu" placeholder="메뉴이름" id="name" required />
-                                </li>
-                                <li className="list_item">
-                                    <input type="text" name="price" placeholder="예상금액 (1인당 / 금액만 입력)" id="price" required />
-                                </li>
-                                <li className="list_item">
-                                    <input type="text" name="url" placeholder="URL" id="adressurl" required />
-                                </li>
-
-                                {/* <div className='list_pic'>
-                                    <ProductImage
-                                        productImg={productImg}
-                                        setproductImg={setproductImg}
-                                    />
-
-                                </div> */}
-                            </ul>
-
-                            <ul className="info_list info_list_add">
-                                <li className="list_item">
-                                    <label className="item_tit" htmlFor="name">1. </label>
-                                    <input type="text" name="menu" placeholder="메뉴이름" id="name" required />
-                                </li>
-                                <li className="list_item">
-                                    <input type="text" name="price" placeholder="예상금액 (1인당 / 금액만 입력)" id="price" required />
-                                </li>
-                                <li className="list_item">
-                                    <input type="text" name="url" placeholder="URL" id="adressurl" required />
-                                </li>
-
-                                {/* <div className='list_pic'>
-                                    <productImage
-                                        productImg={productImg}
-                                        setproductImg={setproductImg}
-                                    />
-
-                                </div> */}
-                            </ul>
-
-                            <button type="button" className="add_btn"><img src="../../../image/make/list_add_ico.png" alt="플러스 아이콘" width={26} height={26}/></button>
+                            {rendering()}
+                            <button type="button" className="add_btn" onClick={nodeAdd}><img src="../../../image/make/list_add_ico.png" alt="플러스 아이콘" width={26} height={26}/></button>
                         </div>
                         <div className="info_area" style={{display: "none"}}>
                             <input type="text" name="check" value={0} required />
@@ -201,54 +219,31 @@ export default function Make() {
                         <div className="info_area" style={{display: "none"}}>
                             <input type="text" name="date" value={true} required />
                         </div>
+                        <div className="info_area" style={{display: "none"}}>
+                            <input type="text" name="prdImages" value={null} required />
+                        </div>
                         <div className="info_area">
                             <p className="info_title">마감시간</p>
                             <ul className="info_list">
-                                <li className="list_item">
-                                    <select>
-                                        <option>00</option>
-                                        <option>01</option>
-                                        <option>02</option>
-                                        <option>03</option>
-                                        <option>04</option>
-                                        <option>05</option>
-                                        <option>06</option>
-                                        <option>07</option>
-                                        <option>08</option>
-                                        <option>09</option>
-                                        <option>10</option>
-                                        <option>11</option>
-                                        <option>12</option>
-                                        <option>13</option>
-                                        <option>14</option>
-                                        <option>15</option>
-                                        <option>16</option>
-                                        <option>17</option>
-                                        <option>18</option>
-                                        <option>19</option>
-                                        <option>20</option>
-                                        <option>21</option>
-                                        <option>22</option>
-                                        <option>23</option>
-                                        <option>24</option>
-                                    </select>
-                                    <p>시</p>
-                                    <select>
-                                        <option>00</option>
-                                        <option>01</option>
-                                        <option>02</option>
-                                        <option>03</option>
-                                        <option>04</option>
-                                        <option>05</option>
-                                    </select>
-                                    <p>분</p>
+                                <li className="list_item" style={{border: "none"}}>
+                                    <div className="select_wrap">
+                                        <select>
+                                            {timeSelect()}
+                                        </select>
+                                    </div>
+                                    <p className="time_txt">시</p>
+                                    <div className="select_wrap">
+                                        <select>
+                                           {minuteSelect()}
+                                        </select>
+                                    </div>
+                                    <p className="time_txt">분</p>
                                 </li>
                             </ul>
                         </div>
 
                         <button type="submit" className="btn_submit">등록완료</button>
                     </form>
-                    <button type="button" className="close_btn"><img src="../../../image/make/modal_close.png" alt="닫기 버튼" width={41} height={40}/></button>
                 </div>
             </div>
         </div>

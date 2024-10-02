@@ -206,4 +206,9 @@
             }
         }
     }
+    .modal { padding: 0; overflow-y: scroll; height: 95vh;}
+    .isOpen {bottom: 0;}
+    .modal__open {height: auto;}
+    .close_btn {z-index: 100; position: absolute; top: 20px; right: 20px; width: 41px; height: 40px;}
+
 }

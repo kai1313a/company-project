@@ -23,6 +23,12 @@
                 label {font-size: 13px; color: #666;}
                 input {width: 100%; height: 100%; font-size: 13px; color: #666; background-color:transparent;}
                 input::placeholder {font-size: 13px; color: #666;}
+
+                .select_wrap {position: relative; -webkit-appearance:none; -moz-appearance:none; appearance:none; box-sizing: border-box; background:transparent; margin-right: 30px; border-bottom: 2px solid #c3c3c3}
+                .select_wrap::after {content: ''; display: block; position: absolute; right: 5px; top: 50%; transform: translateY(-50%) rotate(50deg); width: 10px; height: 2px; background: var(--main01); border-radius: 25px;}
+                .select_wrap::before {content: ''; display: block; position: absolute; right: 0; top: 50%; transform: translateY(-50%) rotate(-50deg); width: 10px; height: 2px; background: var(--main01); border-radius: 25px;}
+                select {width: 100px; -webkit-appearance:none; -moz-appearance:none; appearance:none; box-sizing: border-box; background:transparent; text-align: center;}
+                .time_txt {margin-right: 30px;}
             }
             .item_tit {font-size: 13px;}
 

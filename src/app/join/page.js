@@ -20,7 +20,9 @@ export default function JoinServer() {
         } else {
             Router.push('/intro')
         }
-    });
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
     
 
     const mealCategories = [

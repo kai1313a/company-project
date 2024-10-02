@@ -16,6 +16,7 @@ export default function ListPage({ data }) {
         if (!localStorage.getItem('users')) {
             Router.push('/intro')
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const [dummyData] = useState(data);
@@ -65,7 +66,7 @@ export default function ListPage({ data }) {
     return (
         <div className="wrap list flex flex-col min-h-screen">
             <div className="Header-list w-full flex flex-col items-center ">
-                <Make className="Header-list__menu">점심</Make>
+                <div className="Header-list__menu">점심</div>
                 <div className="Header-list__search flex relative">
                     <input
                         className='Header-list__input'
@@ -107,7 +108,7 @@ export default function ListPage({ data }) {
                             <Link href={"/detail/" + item._id} style={{ width: "100%" }}>
                                 <div className="mem-item__profile flex flex-col items-center">
                                     <div className="img-box">
-                                        <img src="/placeholder.jpg" alt="프로필 이미지" className="profile-image" />
+                                        <img src="/placeholder.jpg" alt="프로필 이미지" width={56} height={56} className="profile-image" />
                                     </div>
                                     <span className='profile-name'>{item.username}</span>
                                 </div>
@@ -141,7 +142,7 @@ export default function ListPage({ data }) {
             <HomeButton />
 
             <Modal>
-                <div>Hello World</div>
+                <Make></Make>
             </Modal>
         </div>
     );

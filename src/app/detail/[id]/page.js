@@ -18,10 +18,10 @@ export default async function ListPageServer(props) {
 }
 
 
-export async function generateStaticParams() {
-    const posts = await fetch('https://.../posts').then((res) => res.json())
+// export async function generateStaticParams() {
+//     const posts = await fetch('https://.../posts').then((res) => res.json())
    
-    return posts.map((post) => ({
-      slug: post.slug,
-    }))
-  }
+//     return posts.map((post) => ({
+//       slug: post.slug,
+//     }))
+//   }

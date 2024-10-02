@@ -27,16 +27,9 @@ const Modal = ({ children }) => {
 
       <div className={`modal ${isOpen ? 'isOpen' : '' ? 'dimm' : ''}`}> 
         {isOpen && (
-          <div 
-            className="inset-0 z-50 flex items-center justify-center" 
-            onClick={handleClose}
-          > 
-            <div className="modal__open">
-              <div className="">
-                {children}
-                <button onClick={handleClose} className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700">닫기</button>
-              </div>
-            </div>
+          <div className="modal__open">
+              {children}
+              <button className="close_btn" ><img onClick={handleClose} src="../../../image/make/modal_close.png" alt="닫기 버튼" width={41} height={40}/></button>
           </div>
         )}
       </div>
