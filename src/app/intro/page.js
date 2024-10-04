@@ -25,13 +25,13 @@ export default function Intro() {
             // const users = JSON.parse(localStorage.getItem('users') || '[]');
             // const allUsers = [...users, user]
             // localStorage.setItem('users', JSON.stringify(allUsers));
-            
+
             // router.push('/join')
         } else { //user 정보가 없을 때
             localStorage.setItem('users', JSON.stringify(user));
             router.push('/join')
-            
-            setTimeout(()=> {
+
+            setTimeout(() => {
                 localStorage.clear('users')
             }, 3000000)
             // 1시간 뒤에 스토리지 삭제
@@ -41,7 +41,7 @@ export default function Intro() {
         console.log('user info', user);
 
     }
-   
+
     const defaultImageUrl = '/image/intro/profile-common.png'; //기본 이미지 경로
 
     // 프로필 이미지 업로드
@@ -79,7 +79,7 @@ export default function Intro() {
     }, []);
 
 
-    
+
 
     return (
         <div className='intro wrap'>
@@ -88,16 +88,16 @@ export default function Intro() {
                 <h1 className='cover_title jua animate__animated animate__fadeIn'>우리 회사 건강한 식문화</h1>
                 <div className='cover_wrap'>
                     <div className='cover_img_wrap cover_img_wrap01 animate__animated animate__zoomIn'>
-                        <img className='cover_img cover_img01' src='./image/intro/intro-text01.png' alt='회' width={54} height={60}/>
-                        <img className='cover_img cover_img01-1 animate__animated animate__swing' src='./image/intro/intro-meal.png' alt='밥그릇'  width={40} height={36} />
+                        <img className='cover_img cover_img01' src='./image/intro/intro-text01.png' alt='회' width={54} height={60} />
+                        <img className='cover_img cover_img01-1 animate__animated animate__swing' src='./image/intro/intro-meal.png' alt='밥그릇' width={40} height={36} />
                     </div>
                     <div className='cover_img_wrap'>
-                        <img className='cover_img cover_img02 animate__animated animate__zoomIn' src='./image/intro/intro-text02.png' alt='사' width={54} height={50}/>
-                        <img className='cover_img cover_img03 animate__animated animate__zoomIn' src='./image/intro/intro-text03.png' alt='세' width={51} height={50}/>
+                        <img className='cover_img cover_img02 animate__animated animate__zoomIn' src='./image/intro/intro-text02.png' alt='사' width={54} height={50} />
+                        <img className='cover_img cover_img03 animate__animated animate__zoomIn' src='./image/intro/intro-text03.png' alt='세' width={51} height={50} />
                     </div>
                     <div className='cover_img_wrap cover_img_wrap03'>
-                        <img className='cover_img cover_img04 animate__animated animate__zoomIn' src='./image/intro/intro-text04.png' alt='끼' width={36} height={54}/>
-                        <img className='cover_img cover_img04-1 animate__animated animate__fadeInDownBig' src='./image/intro/intro-tie.png' alt='넥타이' width={28} height={70}/>
+                        <img className='cover_img cover_img04 animate__animated animate__zoomIn' src='./image/intro/intro-text04.png' alt='끼' width={36} height={54} />
+                        <img className='cover_img cover_img04-1 animate__animated animate__fadeInDownBig' src='./image/intro/intro-tie.png' alt='넥타이' width={28} height={70} />
                     </div>
                 </div>
             </div>
@@ -106,7 +106,7 @@ export default function Intro() {
                 <h2 className='login_title'>프로필 사진과<br />닉네임을 등록해주세요.</h2>
                 <div className='login_profile' onChange={handleImageChange}>
                     <div className='login_img_wrap' >
-                        <img className='login_img' src={image} alt="프로필 이미지" width={148} height={148}/>
+                        <img className='login_img' src={image} alt="프로필 이미지" width={148} height={148} />
                     </div>
                     <input
                         id='loginImgInput'
