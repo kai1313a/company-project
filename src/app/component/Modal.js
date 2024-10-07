@@ -23,13 +23,13 @@ const Modal = ({ children }) => {
 
   return (
     <>
-      <button onClick={handleOpen}>모달 열기</button>
+      <button className='btn-box__btn' onClick={handleOpen}>모달 열기</button>
 
-      <div className={`modal ${isOpen ? 'isOpen' : '' ? 'dimm' : ''}`}> 
+      <div className={`modal ${isOpen ? 'isOpen' : '' ? 'dimm' : ''}`}>
         {isOpen && (
           <div className="modal__open">
-              {children}
-              <button className="close_btn" ><img onClick={handleClose} src="../../../image/make/modal_close.png" alt="닫기 버튼" width={41} height={40}/></button>
+            {children}
+            <button className="close_btn" ><img onClick={handleClose} src="../../../image/make/modal_close.png" alt="닫기 버튼" width={41} height={40} /></button>
           </div>
         )}
       </div>

@@ -10,6 +10,11 @@ import Make from '../component/make';
 export default function ListPage({ data }) {
     const Router = useRouter();
 
+    const defaultImageUrl = '/image/intro/profile-common.png'; //기본 이미지 경로
+
+    // 프로필 이미지 업로드
+    const [image, setImage] = useState(defaultImageUrl);
+
     console.log("Received data:", data);
 
     useEffect(() => {
@@ -108,7 +113,7 @@ export default function ListPage({ data }) {
                             <Link href={"/detail/" + item._id} style={{ width: "100%" }}>
                                 <div className="mem-item__profile flex flex-col items-center">
                                     <div className="img-box">
-                                        <img src="/placeholder.jpg" alt="프로필 이미지" width={56} height={56} className="profile-image" />
+                                        <img src={image} alt="프로필 이미지" width={56} height={56} className="profile-image" />
                                     </div>
                                     <span className='profile-name'>{item.username}</span>
                                 </div>
@@ -139,11 +144,13 @@ export default function ListPage({ data }) {
                 </ul>
             </div>
 
-            <HomeButton />
+            <div className='btn-box'>
+                <HomeButton />
 
-            <Modal>
-                <Make></Make>
-            </Modal>
+                <Modal>
+                    <Make></Make>
+                </Modal>
+            </div>
         </div>
     );
 }
