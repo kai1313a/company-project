@@ -200,9 +200,15 @@ body {
 }
 
 .btn-box {
-  position: fixed;
-  bottom: 20px;
-  right: 32px;
+    width: 100%;
+    min-width: 320px;
+    margin: 0 auto;
+    max-width: 600px;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
 
   // 홈버튼
   &__link {
