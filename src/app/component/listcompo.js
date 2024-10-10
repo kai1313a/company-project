@@ -15,6 +15,8 @@ export default function ListPage({ data }) {
     // 프로필 이미지 업로드
     const [image, setImage] = useState(defaultImageUrl);
 
+    
+    
     console.log("Received data:", data);
 
     useEffect(() => {
