@@ -63,6 +63,7 @@ export default function Intro() {
                 localStorage.clear('profileImg')
             }, 3000000)
         }
+
       };
 
 
@@ -74,7 +75,7 @@ export default function Intro() {
     useEffect(() => {
         const timer = setTimeout(() => {
             setVisible(false);
-        }, 3);
+        }, 3200);
 
         return () => clearTimeout(timer);
     }, []);
