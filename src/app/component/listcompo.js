@@ -115,10 +115,10 @@ export default function ListPage({ data }) {
                         value={selectedCategory}
                         onChange={(e) => handleCategoryChange(e.target.value)}
                     >
-                        <option value="1">아침</option>
-                        <option value="2">점심</option>
-                        <option value="3">저녁·회식</option>
-                        <option value="4">음료·디저트</option>
+                        <option value="0">아침</option>
+                        <option value="1">점심</option>
+                        <option value="2">저녁·회식</option>
+                        <option value="3">음료·디저트</option>
                     </select>
                 </div>
                 <div className="Header-list__search flex relative">
@@ -170,7 +170,7 @@ export default function ListPage({ data }) {
                                     <div className="mem-item__wrap relative">
                                         <div className="mem-item__box flex justify-between">
                                             <h3 className="mem-item__title text-black">{item.title}</h3>
-                                            <p className='mem-item__prcpation text-black'>참여 <span>{item.check}</span>명</p>
+                                            <p className='mem-item__prcpation text-black'>참여 <span>{item.check.length}</span>명</p>
                                         </div>
                                         <div className="mem-item__box flex justify-between">
                                             {item.price && <p className="mem-item__price text-black">예상금액 : 1인당 {item.price[0]}원</p>}

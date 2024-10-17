@@ -226,8 +226,9 @@ body {
     margin: 0 auto 20px;
     background-color: #fff;
     border-radius: 15px;
+    overflow: hidden;
 
-    &:last-child {margin-bottom: 0;}
+    // &:last-child {margin-bottom: 0;}
   }
 
   .modal_user__list {
