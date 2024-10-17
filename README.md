@@ -36,9 +36,3 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
 
-.env
-
-NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=dyrelrwnf
-NEXT_PUBLIC_CLOUDINARY_CLOUD_KEY=128475173643511
-NEXT_PUBLIC_CLOUDINARY_CLOUD_SECRET=uGbUFMQArW0dUMqFC7nH5dDZZCg
-NEXT_PUBLIC_CLOUDINARY_CLOUD_PRESETS=fpczo54q
