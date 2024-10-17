@@ -17,6 +17,7 @@ export default function ListPage({ data }) {
     const [image, setImage] = useState(defaultImageUrl);
     const [userInfo, setUserInfo] = useState(null);
 
+
     // 사용자 이름 생성
     let users = data.map((username, index) => data[index].username);
 
@@ -46,7 +47,7 @@ export default function ListPage({ data }) {
     // URL 변경 감지 및 카테고리 동기화
     useEffect(() => {
         const category = pathname.split('/').pop();
-        if (['1', '2', '3', '4'].includes(category)) {
+        if (['0', '1', '2', '3'].includes(category)) {
             setSelectedCategory(category);
         }
     }, [pathname]);
@@ -168,7 +169,7 @@ export default function ListPage({ data }) {
                                     <div className="img-box">
                                         <img src={image} alt="프로필 이미지" width={56} height={56} className="profile-image" />
                                     </div>
-                                    <span className='profile-name'>{userInfo?.loginName || item.username}</span>
+                                    <span className='profile-name'>{item.userName}</span>
                                 </div>
                                 <div className="mem-item__content">
                                     <div className="mem-item__wrap relative">
